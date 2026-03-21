@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page.pro"></title>
+    <link rel="stylesheet" href="./css/all.css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <style>
+        .ke-area{
+            margin-top:20px;
+        }
+        .cai-top{
+            padding:15px;
+            height:142px;
+            background:url(./images/pro-bg.png) no-repeat;
+        }
+        .cai-th{
+            margin-bottom:10px;
+            color:#fff;
+            font-size: 15px;
+        }
+        .cai-total{
+            margin-bottom:10px;
+            font-size:13px;
+            color:#fff;
+        }
+        .cai-btn{
+            padding:0 10px;
+            display:inline-block;
+            background: #3389FA;
+            border-radius:5px;
+            line-height:40px;
+            color:#fff;
+            font-size:14px;
+        }
+        .order-info{
+            padding:0 20px;
+            margin-top:12px;
+        }
+        .order-item{
+            padding:5px 0;
+        }
+        .order-item span{
+            font-size:12px;
+            color:#666666;
+        }   
+        .order-item span.order-total{
+            color:#3389FA;
+        }
+        .pro-list{
+            margin:20px 0;
+        }
+        .pro-item{
+            padding:10px 0;
+            border-radius:10px;
+            border:1px solid #EEEEEE;
+        }
+        .pro-top{
+            padding:0 12px;
+            padding-bottom:20px;
+            border-bottom: 1px solid #EEEEEE;
+        }
+        .pro-img img{
+            width:40px;
+            height:40px;
+        }
+        .pro-name{
+            margin-left:10px;
+            font-size: 18px;
+        }
+        .pro-day{
+            margin-left:10px;
+            border-radius:0 10px 0 10px;
+            padding:5px;
+            color:#fff;
+            font-size:12px;
+            background-color:#888888;
+        }
+        .buy-btn{
+            border-radius:5px;
+            color:#fff;
+            padding: 5px 15px;
+            background: #3389FA;
+        }
+        .tag-list{
+            margin-top:20px;
+            text-align: center;
+        }
+        .tag-list li{
+            flex:1;
+            list-style:none;
+        }
+        .tag-name{
+            margin-bottom:12px;
+            font-size:12px;
+            color: #666666;;
+        }
+        .tag-num{
+            color:#000;
+            font-size: 14px;
+        }
+        .tag-line{
+            position: relative;
+            margin:20px auto 0 auto;
+            width:94%;
+            height:10px;
+            border-radius:10px;
+            overflow: hidden;
+            background-color:#666666;
+        }
+        .tag-nums{
+            position: absolute;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            background-color: #3389FA;
+        }
+        .tag-text{
+            position: absolute;
+            right:5px;
+            top:0;
+            font-size:12px;
+            line-height:10px;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <span onclick="goBack()" class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="8.048568725585938" height="14.181901931762695" viewBox="0 0 8.048568725585938 14.181901931762695"><g transform="matrix(-1,0,0,-1,16.097137451171875,28.36380386352539)"><path d="M8.986025805585937,28.363803931762696C8.719358925585938,28.363803931762696,8.541581155585938,28.274914931762694,8.363803385585937,28.097137931762695C8.008247852585937,27.741581931762695,8.097136735585938,27.208247931762696,8.452692505585938,26.852692931762697L14.141582025585937,21.697136831762695C14.319360225585937,21.519358631762696,14.408248425585938,21.341581331762697,14.408248425585938,21.163803131762695C14.408248425585938,20.986024831762695,14.319359325585937,20.808247531762696,14.141582025585937,20.630469831762696L8.363803865585938,15.741581831762694C8.008248329585937,15.386026231762695,7.919359445585937,14.852692961762695,8.274914745585937,14.497137311762696C8.630470275585937,14.141581773762695,9.163803625585938,14.052692891762696,9.519359125585938,14.408248421762694L15.208247625585937,19.297137231762697C15.741580525585938,19.741581931762695,16.097137425585938,20.452693031762696,16.097137425585938,21.163804031762695C16.097137425585938,21.874915131762695,15.830470525585937,22.497137031762698,15.297136825585937,23.030470831762695L9.608247725585937,28.186026931762697C9.430470025585937,28.274915931762695,9.163803125585938,28.363804931762694,8.986025805585937,28.363803931762696Z" fill="#000000" fill-opacity="1" style="mix-blend-mode:passthrough"/></g></svg>
+        </span>
+        <h1 data-i18n="page.pro"></h1>
+        <span class="rechange-cak"></span>
+    </header>
+    <div class="ke-area">
+        <div class="container">
+            <div class="cai-top">
+                <p class="cai-th" data-i18n="fund.managed"></p>
+                <p class="cai-total">
+                    0
+                </p>
+                <div class="cai-btn flex-start">
+                    <span class="cai-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="16" height="16" viewBox="0 0 16 16"><defs><clipPath id="master_svg0_5396_9443"><rect x="0" y="0" width="16" height="16" rx="0"/></clipPath></defs><g clip-path="url(#master_svg0_5396_9443)"><g><path d="M12.16580459375,15.40797915625L3.83334119375,15.40797915625C2.81168019375,15.40797915625,1.98193359375,14.57823315625,1.98193359375,13.55657115625L1.98193359375,2.44699665625C1.98193359375,1.42364245625,2.81111586375,0.59446018935,3.83334119375,0.59446018935L9.38812829375,0.59446018935C10.00902749375,0.58542895315,10.25569339375,0.60744261725,10.31439689375,0.60744261725L10.31439689375,0.59446018935L14.01834059375,4.29840425625L14.01834059375,13.55713515625C14.01834059375,14.57879615625,13.18915859375,15.40797915625,12.16580459375,15.40797915625ZM10.31439689375,1.52072912625L10.31439689375,3.37213655625C10.31439689375,3.88466045625,10.72814179375,4.29840465625,11.24066539375,4.29840465625L13.09207359375,4.29840465625L10.31439689375,1.52072912625ZM13.09207259375,5.22467325625L11.24066449375,5.22467325625C10.21730999375,5.22467325625,9.38812829375,4.395491156249999,9.38812829375,3.37213655625C9.38812829375,3.37213655625,9.367808293749999,2.62931585625,9.37514589375,1.5207290062499998L3.83334119375,1.5207290062499998C3.3225107937500002,1.5207290062499998,2.90820181375,1.93447355625,2.90820181375,2.44699715625L2.90820181375,13.55713515625C2.90820181375,14.06796615625,3.32194629375,14.48340415625,3.83334119375,14.48340415625L12.16580459375,14.48340415625C12.67832859375,14.48340415625,13.09207359375,14.06796615625,13.09207359375,13.55713515625L13.09207259375,5.22467325625ZM10.77724839375,11.70460015625L5.22189709375,11.70460015625C4.96619989375,11.70460015625,4.75960969375,11.49744615625,4.75960969375,11.24231215625C4.75960969375,10.98661515625,4.96676399375,10.78002415625,5.22189709375,10.78002415625L10.77668379375,10.78002415625C11.03351019375,10.78002415625,11.24066449375,10.98717915625,11.24066449375,11.24231215625C11.24066449375,11.49744615625,11.03407479375,11.70460015625,10.77724839375,11.70460015625ZM10.77724839375,8.92692465625L5.22189709375,8.92692465625C4.96619989375,8.92692465625,4.75960969375,8.71977045625,4.75960969375,8.464073156249999C4.75960969375,8.20894045625,4.96676399375,8.001785256249999,5.22189709375,8.001785256249999L10.77668379375,8.001785256249999C11.03351019375,8.001785256249999,11.24066449375,8.20893955625,11.24066449375,8.464073156249999C11.24066449375,8.71977045625,11.03407479375,8.92692465625,10.77724839375,8.92692465625Z" fill="#FFFFFF" fill-opacity="1" style="mix-blend-mode:passthrough"/></g></g></svg>
+                    </span>
+                    <span data-i18n="order.entrusted"></span>
+                </div>
+            </div>
+            <div class="order-info">
+                <div class="order-item flex-justify">
+                    <span data-i18n="order.total"></span>
+                    <span class="order-total total1">  
+                        0
+                    </span>
+                </div>
+                <div class="order-item flex-justify">
+                    <span data-i18n="profit.yesterday"></span>
+                    <span class="order-total total2">  
+                        0
+                    </span>
+                </div>
+                <div class="order-item flex-justify">
+                    <span data-i18n="profit.accumulated"></span>
+                    <span class="order-total total3">  
+                        0
+                    </span>
+                </div>
+            </div>
+            <div class="pro-list">
+                
+            </div>
+        </div>
+    </div>
+        <script src="./js/swiper-bundle.min.js"></script>
+    <script src="./js/layer/layer.js"></script>
+    <script src="lang/lang.js"></script>
+    <script src="./js/reset.js"></script>
+    <script>
+        $(".cai-btn").click(function() {
+            window.location.href = './history-pro-list.html'
+        })
+        function getUserInfo() {
+            var url = preFixx + "/index/user/getUserInfo";
+            sendPostRequest({
+                url,
+                type: 'GET',
+                data: {},
+                successCallback: function(result) {
+                    if(result.code == 200){
+                        const { code, data } = result;
+                        const { now_money } = data;
+                        $(".cai-total").html(now_money)
+                    } else {
+                        layer.msg(result.msg);
+                    }
+
+                },
+                errorCallback: function(xhr) {
+                    console.error('请求错误', xhr);
+                }
+            })
+        }
+        function getTotal() { // 获取余额宝总金额以及昨日收益
+            var url = preFixx + '/index/moneyInvestment/getTotalMoneyAndYesterdayMoney'
+            sendPostRequest({
+                    url,
+                    type: 'get',
+                    data: {},
+                    successCallback: function(result) {
+                        if(result.code == 200){
+                            const { total_money, yesterday_earnings_money } = result.data
+                            $(".total1").html(total_money)
+                            $(".total2").html(yesterday_earnings_money)
+                        } else {
+                            layer.msg(result.msg);
+                        }
+                    },
+                    errorCallback: function(xhr) {
+                        console.error('请求错误', xhr);
+                    }
+                })
+        }
+        function getYebList() {
+            var url = preFixx + '/index/moneyInvestment/getMoneyInvestmentList'
+            sendPostRequest({
+                    url,
+                    type: 'get',
+                    data: {},
+                    successCallback: function(result) {
+                        if(result.code == 200){
+                            const { data } = result;
+                            if(data && data.length) {
+                                let yebHtml = '';
+                                data.forEach(item => { 
+                                    yebHtml += `
+                                        <div class="pro-item">
+                                            <div class="pro-top flex-justify">
+                                                <p class="flex-start">
+                                                    <span class="pro-img">
+                                                        <img src="./images/prod-img.png" alt="">
+                                                    </span>
+                                                    <span class="pro-name">
+                                                        ${item.name}
+                                                    </span>
+                                                    <span class="pro-day">
+                                                        ${item.day}
+                                                       
+                                                        <span data-i18n="time.day" ></span>
+                                                    </span>
+                                                </p>
+                                                <span class="buy-btn" data-i18n="button.buy" data-id="${item.id}">
+                                                    买入
+                                                </span>
+                                            </div>
+                                            <ul class="tag-list flex-start">
+                                                <li>
+                                                    <p class="tag-name" data-i18n="limit.single" ></p>
+                                                    <p class="tag-num">
+                                                        ${item.min_price} ~ ${item.top_price}
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <p class="tag-name" data-i18n="profit.annual"></p>
+                                                    <p class="tag-num">
+                                                        ${item.rate}%
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <p class="tag-name" data-i18n="redeem.early"> </p>
+                                                    <p class="tag-num">
+                                                        ${item.redeem_rate}%
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                            <div class="tag-line">
+                                                <p class="tag-nums"></p>
+                                                <span class="tag-text">100%</span>
+                                            </div>
+                                        </div>
+                                `
+                                });
+                                $(".pro-list").html(yebHtml)
+                                i18n.init();
+                            }
+
+
+                        } else {
+                            layer.msg(result.msg);
+                        }
+                    },
+                    errorCallback: function(xhr) {
+                        console.error('请求错误', xhr);
+                    }
+                })
+        }
+        function getYebTotal() { // 获取余额宝总金额以及昨日收益
+            var url = preFixx + '/index/moneyInvestment/getMoneyEarningsInfo'
+            sendPostRequest({
+                    url,
+                    type: 'get',
+                    data: {},
+                    successCallback: function(result) {
+                        if(result.code == 200){
+                            console.log(111, result.data)
+                        } else {
+                            layer.msg(result.msg);
+                        }
+                    },
+                    errorCallback: function(xhr) {
+                        console.error('请求错误', xhr);
+                    }
+                })
+        }
+        getYebList()
+        getTotal()
+        getUserInfo()
+        getYebTotal()
+        $(".pro-list").on('click', '.buy-btn', function() {
+            const id = $(this).attr("data-id")
+            window.location.href = `./pro-detail.html?id=${id}`
+        })
+    </script>
+</body>
+</html>

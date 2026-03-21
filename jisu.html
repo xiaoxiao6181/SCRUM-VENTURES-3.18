@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page.chiList"></title>
+    <link rel="stylesheet" href="./css/all.css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <style>
+        .ke-top{
+            padding:12px 0;
+            background-color:#fff;
+        }
+        .ke-bg{
+            background-color:#f7f7f7;
+        }
+        .page-header{
+            background-color:#fff;
+        }
+        .jisu{
+            background-color:#fff;
+        }
+        .jisu li{
+            position: relative;
+            margin-right:20px;
+            color:#8F8F8F;
+            list-style:none;
+        }
+        .jisu li.active{
+            color:#000;
+        }
+        .jisu li.active::after{
+            content:'';
+            position: absolute;
+            left:2px;
+            bottom:-3px;
+            width:96%;
+            height:2px;
+            background-color:#2979FF;
+        }
+        .jisu-tab{
+            margin-top:20px;
+            background-color:#fff;
+        }
+        .jisu-tab li{
+            border-radius:5px;
+            list-style:none;
+            width:48%;
+            height:35px;
+            line-height:35px;
+            color:#2979FF;
+            text-align: center;
+            border:1px solid #2979FF;
+        }
+        .jisu-tab li.active{
+            color:#fff;
+            background-color:#2979FF;
+        }
+        .ke-area-item{
+            margin-top:12px;
+            padding:10px;
+            border-radius: 5px;
+            background-color:#fff;
+        }
+        .up{
+            color:#21B060;
+            
+        }
+        .down{
+            color:#E72F2B;
+        }
+        .area-item-top{
+            padding-bottom:10px;
+            border-bottom: 1px solid #ebebeb;
+        }
+        .pro-name{
+            margin:10px 0;
+        }
+        .order-sn{
+            margin-bottom:10px;
+        }
+        .pro-area{
+            padding:10px;
+            font-size:12px;
+            border-radius:5px;
+            background-color:#F8F8F8;
+        }
+        .pro-item-b{
+            margin-bottom:12px;
+        }
+        .alert-area{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width:100%;
+            height:100%;
+        }
+        .area-content{
+            width:90%;
+            padding:16px;
+            border-radius:10px;
+            background:#fff;
+        }
+        .content-num{
+            margin:20px 0;
+            text-align: center;
+            font-size:28px;
+        }
+        .alert-name{
+            font-size:16px;
+        }
+        .content-list{
+            list-style:none;
+        }
+        .content-list li{
+            padding:5px 0;
+            list-style:none;
+            font-size:12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .pro-alert{
+            display:none;
+        }
+    </style>
+</head>
+<body class="ke-bg">
+    <header class="page-header">
+        <span onclick="goBack()" class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="8.048568725585938" height="14.181901931762695" viewBox="0 0 8.048568725585938 14.181901931762695"><g transform="matrix(-1,0,0,-1,16.097137451171875,28.36380386352539)"><path d="M8.986025805585937,28.363803931762696C8.719358925585938,28.363803931762696,8.541581155585938,28.274914931762694,8.363803385585937,28.097137931762695C8.008247852585937,27.741581931762695,8.097136735585938,27.208247931762696,8.452692505585938,26.852692931762697L14.141582025585937,21.697136831762695C14.319360225585937,21.519358631762696,14.408248425585938,21.341581331762697,14.408248425585938,21.163803131762695C14.408248425585938,20.986024831762695,14.319359325585937,20.808247531762696,14.141582025585937,20.630469831762696L8.363803865585938,15.741581831762694C8.008248329585937,15.386026231762695,7.919359445585937,14.852692961762695,8.274914745585937,14.497137311762696C8.630470275585937,14.141581773762695,9.163803625585938,14.052692891762696,9.519359125585938,14.408248421762694L15.208247625585937,19.297137231762697C15.741580525585938,19.741581931762695,16.097137425585938,20.452693031762696,16.097137425585938,21.163804031762695C16.097137425585938,21.874915131762695,15.830470525585937,22.497137031762698,15.297136825585937,23.030470831762695L9.608247725585937,28.186026931762697C9.430470025585937,28.274915931762695,9.163803125585938,28.363804931762694,8.986025805585937,28.363803931762696Z" fill="#000000" fill-opacity="1" style="mix-blend-mode:passthrough"/></g></svg>
+        </span>
+        <h1 data-i18n="page.chiList">极速持仓</h1>
+        <span></span>
+    </header>
+    <div class="ke-top">
+        <div class="container">
+            <ul class="flex-start jisu">
+                <li  class="active" data-i18n="hang.cryptocurrency"></li>
+                <li data-i18n="hang.stocks"></li>
+                <li data-i18n="hang.futures"></li>
+                <li data-i18n="hang.forex"></li>
+            </ul>
+            <ul class="jisu-tab flex-justify">
+                <li class="active" data-status="1" data-i18n="hang.myHoldings" >
+                    我的持仓
+                </li>
+                <li data-status="2" data-i18n="hang.myClosedPositions">
+                    我的平仓
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="ke-area">
+        <div class="container ke-list">
+            <!--<div class="ke-area-item">-->
+            <!--    <div class="area-item-top flex-justify">-->
+            <!--        <p>-->
+            <!--            <span>-->
+            <!--                黄金摆件【福气满满】-->
+            <!--            </span>-->
+            <!--            <span class="up">-->
+            <!--                60秒-->
+            <!--            </span>-->
+            <!--        </p>-->
+            <!--        <span class="up">-->
+            <!--            买涨-->
+            <!--        </span>-->
+            <!--    </div>-->
+            <!--    <div class="pro-name">-->
+            <!--       订单编号：<span class="pro-code">-->
+            <!--           27897289289719729-->
+            <!--       </span>-->
+            <!--    </div>-->
+            <!--    <div class="flex-justify order-sn">-->
+            <!--        <div>-->
+            <!--            <span>-->
+            <!--                金额：-->
+            <!--            </span>-->
+            <!--            <span>-->
+            <!--                1010-->
+            <!--            </span>-->
+            <!--        </div>-->
+            <!--        <div>-->
+            <!--            <span>-->
+            <!--                盈亏：-->
+            <!--            </span>-->
+            <!--            <span class="down">-->
+            <!--                +1.99-->
+            <!--            </span>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--    <div class="pro-area">-->
+            <!--        <div class="flex-justify pro-item-b">-->
+            <!--            <p>-->
+            <!--                <span>-->
+            <!--                    购买价：-->
+            <!--                </span>-->
+            <!--                <span>-->
+            <!--                    101.090-->
+            <!--                </span>-->
+            <!--            </p>-->
+            <!--            <p>-->
+            <!--                <span>-->
+            <!--                    倒计时-->
+            <!--                </span>-->
+            <!--                <span>-->
+            <!--                    280-->
+            <!--                </span>-->
+            <!--            </p>-->
+            <!--        </div>-->
+            <!--        <div class="flex-justify">-->
+            <!--            <p> -->
+            <!--                <span>-->
+            <!--                    持仓时间 -->
+            <!--                </span>-->
+            <!--                <span>-->
+            <!--                    1929919299191-->
+            <!--                </span>-->
+            <!--            </p>-->
+            <!--            <p> -->
+            <!--                <span>-->
+            <!--                    结束时间 -->
+            <!--                </span>-->
+            <!--                <span>-->
+            <!--                    1929919299191-->
+            <!--                </span>-->
+            <!--            </p>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="modal-overlay pro-alert">
+        <div class="alert-area">
+            <div class="area-content">
+                <div class="content-header flex-justify">
+                    <span></span>
+                    <span class="alert-name"></span>
+                    <span class="alert-close">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="16" height="16" viewBox="0 0 16 16"><defs><clipPath id="master_svg0_5511_09077"><rect x="0" y="0" width="16" height="16" rx="0"/></clipPath></defs><g clip-path="url(#master_svg0_5511_09077)"><g><path d="M1.61462402625,13.538451875L7.15612790625,7.996948275L1.61462402625,2.4539794749999997C1.38171386725,2.221069335,1.38171386725,1.843139645,1.61462402625,1.610229495C1.84753417625,1.377319336,2.22546386625,1.377319336,2.4583740062499997,1.610229495L7.99987790625,7.151733375L13.54284640625,1.610229495C13.77575640625,1.377319336,14.15368640625,1.377319336,14.38659640625,1.610229495C14.61950640625,1.843139645,14.61950640625,2.221069335,14.38659640625,2.4539794749999997L8.84362790625,7.995483375L14.38659640625,13.538451875C14.61950640625,13.771361875,14.61950640625,14.149291875,14.38659640625,14.382201875C14.26940940625,14.497924875,14.11706540625,14.556518875,13.96472140625,14.556518875C13.81237840625,14.556518875,13.66003440625,14.497924875,13.54284640625,14.382201875L8.001342806250001,8.839233375L2.4583740062499997,14.380736875C2.34118652625,14.496459875,2.18884277625,14.555053875,2.03649902625,14.555053875C1.88415527625,14.555053875,1.73181152625,14.496459875,1.61462402625,14.380736875C1.38171386725,14.147826875,1.38171386725,13.771361875,1.61462402625,13.538451875Z" fill="#333303" fill-opacity="1" style="mix-blend-mode:passthrough"/></g></g></svg>
+                    </span>
+                </div>
+                <div class="content-num">
+                    <span class="counet-sl-num"></span>
+                    <span>USDT</span>
+                </div>
+                <ul class="content-list">
+                    <li>
+                        <span data-i18n="pro.type">
+                            类型
+                        </span>
+                        <span class="buf-type">
+                            买账
+                        </span>
+                    </li>
+                    <li>
+                        <span data-i18n="pro.buyPrice"></span>
+                        <span class="buy-in-num">
+                            12.00
+                        </span>
+                    </li>
+                    <li>
+                        <span data-i18n="pro.sellPrice"></span>
+                        <span class="buy-out-num">
+                            12.00
+                        </span>
+                    </li>
+                    <li>
+                        <span data-i18n="pro.order_amount" >
+                            订单金额
+                        </span>
+                        <span class="order-nun">
+                            买账
+                        </span>
+                    </li>
+                    <li>
+                        <span data-i18n="pro.time"></span>
+                        <span class="buy-time">
+                            12.00
+                        </span>
+                    </li>
+                    <li>
+                        <span data-i18n="pro.profit_ratio"></span>
+                        <span class="buy-bi">
+                            12.00
+                        </span>
+                    </li>
+                    <li>
+                        <span data-i18n="pro.fee"></span>
+                        <span class="sxf-nun"></span>
+                    </li>
+                    <li>
+                        <span data-i18n="pro.purchase_time"></span>
+                        <span class="buy-tims">
+                            12.00
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/layer/layer.js"></script>
+    <script type="text/javascript" src="./js/clipboard.min.js"></script>
+    <script src="lang/lang.js"></script>
+    <script src="./js/reset.js"></script>
+    <script>
+        let listStatus = 1;
+    let countdownTimers = {}; // 存储每个订单的倒计时数据
+    let needRefresh = false;
+    let refreshInterval; // 存储列表刷新间隔
+    let countdownInterval; // 存储倒计时更新间隔
+    let htSxf = 0;
+    let proList = [];
+
+    // 初始化函数
+    function init() {
+        // 清除可能的旧定时器
+        clearIntervals();
+        
+        // 设置倒计时更新间隔（每秒更新）
+        countdownInterval = setInterval(updateCountdowns, 1000);
+        
+        // 设置列表刷新间隔（30秒或倒计时结束时刷新）
+        refreshInterval = setInterval(refreshListIfNeeded, 30000);
+        
+        // 初始加载
+        getList();
+        getUserInfo();
+    }
+
+    // 清除所有定时器
+    function clearIntervals() {
+        if (countdownInterval) clearInterval(countdownInterval);
+        if (refreshInterval) clearInterval(refreshInterval);
+    }
+
+    // 切换标签时调用
+    $(".jisu-tab li").click(function() {
+        const id = $(this).attr("data-status");
+        if (listStatus == id) return; // 如果状态没变，不执行任何操作
+        
+        $(this).addClass("active").siblings().removeClass("active");
+        listStatus = id;
+        
+        // 清除旧的定时器并重新初始化
+        clearIntervals();
+        init();
+    });
+
+    // 清除所有倒计时
+    function clearAllCountdowns() {
+        countdownTimers = {};
+    }
+
+    function getUserInfo() {
+        var url = preFixx + "/index/user/getUserInfo";
+        sendPostRequest({
+            url,
+            type: 'GET',
+            loading: false,
+            data: {},
+            successCallback: function(result) {
+                if(result.code == 200){
+                    const { code, data } = result;
+                    const { create_order_rate, now_money } = data;
+                    htSxf = create_order_rate;
+                } else {
+                    layer.msg(result.msg);
+                }
+            },
+            errorCallback: function(xhr) {
+                console.error('请求错误', xhr);
+            }
+        });
+    }
+
+    // 获取列表数据
+    function getList() {
+        // 只有"我的持仓"状态才需要频繁请求
+        const isHoldingTab = listStatus == 1;
+        
+        var url = preFixx + "/index/product/getProductOrderList";
+        sendPostRequest({
+            url,
+            type: 'GET',
+            data: {
+                status: listStatus,
+                page: 1,
+                limit: 300
+            },
+            successCallback: function(result) {
+                if(result.code == 200) {
+                    const { data } = result.data;
+                    $(".ke-list").html("");
+                    
+                    if(data && data.length) {
+                        let reHtml = '';
+                        // 过滤掉已经结束的订单（down_time == 0）
+                        console.log(111, isHoldingTab)
+                        proList = isHoldingTab ? data.filter(item => item.down_time > 0) : data;
+                        
+                        // 清除旧的倒计时数据
+                        clearAllCountdowns();
+                        
+                        if(proList.length > 0) {
+                            needRefresh = isHoldingTab; // 只有"我的持仓"状态需要刷新
+                            console.log("pro", proList)
+                            proList.forEach(item => {
+                                // 计算初始剩余秒数
+                                const remainingSeconds = isHoldingTab ? 
+                                    item.down_time : 0;
+                                console.log(1111, remainingSeconds)
+                                // 存储倒计时数据
+                                if(isHoldingTab) {
+                                    countdownTimers[item.id] = {
+                                        createTime: new Date(item.create_time).getTime(),
+                                        remaining: remainingSeconds,
+                                        endTime: new Date(item.plan_settle_time).getTime()
+                                    };
+                                }
+    
+                                reHtml += `
+                                    <div class="ke-area-item" data-id="${item.id}">
+                                        <div class="area-item-top flex-justify">
+                                            <p>
+                                                <span>${item.product_name}</span>
+                                                <span>${item.time}S</span>
+                                            </p>
+                                            <span class="${item.type == 1 ? "up" : "down"}">
+                                                ${item.type == 1 ? `<span data-i18n="pro.long_position"></span>` : `<span data-i18n="pro.short_position"></span>`}
+                                            </span>
+                                        </div>
+                                        <div class="pro-name">
+                                            <span data-i18n="order_id"></span>
+                                            <span class="pro-code">${item.order_sn}</span>
+                                        </div>
+                                        <div class="flex-justify order-sn">
+                                            <div>
+                                                <span data-i18n="pro.amount"></span>
+                                                <span>${item.wtye}</span>
+                                            </div>
+                                            <div>
+                                                <span data-i18n="pro.profit_loss"></span>
+                                                <span class="${item.earnings_money >= 0 ? 'up' : 'down'}">
+                                                    ${item.earnings_money >= 0 ? '+' : ''}${item.earnings_money}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="pro-area">
+                                            <div class="flex-justify pro-item-b">
+                                                <p>
+                                                    <span data-i18n="pro.purchase_price"></span>
+                                                    <span>${item.jcdw}</span>
+                                                </p>
+                                                ${isHoldingTab ? `
+                                                    <p>
+                                                        <span data-i18n="pro.countdown"></span>
+                                                        <span class="countdown-text" data-id="${item.id}">
+                                                            ${getDjs(remainingSeconds)}
+                                                        </span>
+                                                    </p>
+                                                ` : '<p></p>'}
+                                            </div>
+                                            <div class="flex-justify">
+                                                <p>
+                                                    <span data-i18n="pro.holding_period"></span>
+                                                    <span>${item.create_time}</span>
+                                                </p>
+                                                <p>
+                                                    <span data-i18n="pro.end_time"></span>
+                                                    <span>${item.plan_settle_time}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                            });
+                            
+                            $(".ke-list").html(reHtml);
+                            i18n.init();
+                        } else {
+                            needRefresh = false;
+                        }
+                    } else {
+                        needRefresh = false;
+                        proList = [];
+                    }
+                } else {
+                    layer.msg(result.msg);
+                }
+            },
+            errorCallback: function(xhr) {
+                console.error('请求错误', xhr);
+            }
+        });
+    }
+
+    // 点击查看详情
+    $(".ke-list").on('click', '.ke-area-item', function() {
+        if(listStatus == 1) {
+            return false;
+        }
+        const currIndex = proList.findIndex(item => item.id == $(this).attr("data-id"));
+        if (currIndex === -1) return;
+        
+        const { create_time, jcdw, time, mode_type, product_name, earnings_money, pcdw, wtye, profit_rate, type } = proList[currIndex];
+        $(".pro-alert").css("display", "flex");
+        $(".alert-name").html(product_name);
+        $(".counet-sl-num").html(earnings_money > 0 ? `+${earnings_money}` : `${earnings_money}`);
+        $(".buf-type").attr("data-i18n", type == 1 ? `pro.long_position` : `pro.short_position`)
+            .addClass(type == 1 ? "up" : "down")
+            .removeClass(type != 1 ? "up" : "down");
+        $(".sxf-nun").text((wtye * (htSxf / 100)).toFixed(1));
+        $(".content-num").addClass("up");
+        $(".buy-in-num").html(jcdw);
+        $(".buy-out-num").html(pcdw);
+        $(".order-nun").html(wtye);
+        $(".buy-time").html(`${time}S`);
+        $(".buy-bi").html(`${profit_rate}%`);
+        $(".buy-tims").html(create_time);
+        i18n.init();
+    });
+
+    // 关闭弹窗
+    $(".alert-close").click(function() {
+        $(".pro-alert").css("display", "none");
+    });
+
+    // 格式化倒计时显示
+    function getDjs(totalSeconds) {
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        console.log("543, ", `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`)
+        return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+
+    // 更新倒计时显示
+    function updateCountdowns() {
+        const isHoldingTab = listStatus == 1;
+        if(!isHoldingTab) return; // 只有"我的持仓"状态需要处理倒计时
+        
+        let hasEnded = false;
+        
+        Object.keys(countdownTimers).forEach(id => {
+            const timer = countdownTimers[id];
+            // 计算剩余时间
+            timer.remaining = timer.remaining - 1;
+            // 标记是否有订单结束
+            if(timer.remaining === 0) {
+                hasEnded = true;
+            } else {
+                // 更新DOM显示
+                const $countdown = $(`.countdown-text[data-id="${id}"]`);
+                if($countdown.length) {
+                    $countdown.text(getDjs(timer.remaining));
+                }
+            }
+            
+        });
+        
+        // 如果有订单结束，标记需要刷新列表
+        if(hasEnded) {
+            needRefresh = true;
+            refreshListIfNeeded()
+        }
+    }
+
+    // 按需刷新列表
+    function refreshListIfNeeded() {
+        if(needRefresh || listStatus == 1) {
+            getList();
+            needRefresh = false;
+        }
+    }
+
+    // 返回按钮
+    function goBack() {
+        window.location.href = "./user.html";
+    }
+
+    // 页面卸载时清除定时器
+    $(window).on('beforeunload', function() {
+        clearIntervals();
+    });
+
+    // 初始化
+    $(document).ready(function() {
+        init();
+    });
+    </script>
+</body>
+</html>

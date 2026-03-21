@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page.dui">兑换</title>
+    <link rel="stylesheet" href="./css/all.css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <style>
+        .ke-area {
+            margin-top: 20px;
+        }
+        .dui-top{
+            margin-bottom:20px;
+        }
+        .top-item{
+            width:43%;
+        }
+        .dui-title{
+            margin-bottom:8px;
+            color:#5F5F5F;
+            font-size:12px;
+        }
+        .dui-num{
+            font-size:14px;
+        }
+        .login-item {
+            margin-bottom: 25px;
+        }
+        .form-al {
+            padding: 0 10px 0 0;
+            border-radius: 5px;
+            border: 1px solid #E1E1E1;
+        }
+
+        .form-money {
+            width: 80%;
+            border-radius: 5px;
+            padding: 0 10px;
+            color: #000;
+            height: 40px;
+            outline: 0;
+            line-height: 40px;
+            border: none;
+        }
+        .th-item {
+            padding: 5px 0;
+            color: #5F5F5F;
+            font-size: 12px;
+        }
+        .modal-overlay{
+            display:none;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header class="page-header">
+        <span onclick="goBack()" class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"
+                width="8.048568725585938" height="14.181901931762695"
+                viewBox="0 0 8.048568725585938 14.181901931762695">
+                <g transform="matrix(-1,0,0,-1,16.097137451171875,28.36380386352539)">
+                    <path
+                        d="M8.986025805585937,28.363803931762696C8.719358925585938,28.363803931762696,8.541581155585938,28.274914931762694,8.363803385585937,28.097137931762695C8.008247852585937,27.741581931762695,8.097136735585938,27.208247931762696,8.452692505585938,26.852692931762697L14.141582025585937,21.697136831762695C14.319360225585937,21.519358631762696,14.408248425585938,21.341581331762697,14.408248425585938,21.163803131762695C14.408248425585938,20.986024831762695,14.319359325585937,20.808247531762696,14.141582025585937,20.630469831762696L8.363803865585938,15.741581831762694C8.008248329585937,15.386026231762695,7.919359445585937,14.852692961762695,8.274914745585937,14.497137311762696C8.630470275585937,14.141581773762695,9.163803625585938,14.052692891762696,9.519359125585938,14.408248421762694L15.208247625585937,19.297137231762697C15.741580525585938,19.741581931762695,16.097137425585938,20.452693031762696,16.097137425585938,21.163804031762695C16.097137425585938,21.874915131762695,15.830470525585937,22.497137031762698,15.297136825585937,23.030470831762695L9.608247725585937,28.186026931762697C9.430470025585937,28.274915931762695,9.163803125585938,28.363804931762694,8.986025805585937,28.363803931762696Z"
+                        fill="#000000" fill-opacity="1" style="mix-blend-mode:passthrough" />
+                </g>
+            </svg>
+        </span>
+        <h1 data-i18n="page.dui"></h1>
+        <span class="rechange-list">
+        </span>
+    </header>
+    <div class="ke-area">
+        <div class="container">
+            <div class="dui-top flex-justify">
+                <div class="flex-justify top-item">
+                    <span data-i18n="wallet.cryptoType"> </span>
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="10" height="10.000000953674316" viewBox="0 0 10 10.000000953674316"><defs><clipPath id="master_svg0_5396_28353"><rect x="10" y="0" width="10.000000953674316" height="10" rx="0"/></clipPath></defs><g transform="matrix(0,1,-1,0,10,-10)" clip-path="url(#master_svg0_5396_28353)"><g><path d="M13.0556336625,9.72255901875C12.8889715125,9.72255901875,12.7778588525,9.66699791875,12.6667465525,9.55593491875C12.4445276595,9.33368301875,12.5000776905,9.00037191875,12.7223025525,8.77812381875L16.2778398625,5.55591101875C16.3889651625,5.44479851875,16.4445278625,5.33368591875,16.4445278625,5.22257901875C16.4445278625,5.11146641875,16.3889651625,5.00035381875,16.2778398625,4.88924121875L12.6667465525,1.83368593875C12.4445276595,1.61146729875,12.3889715295,1.27812996875,12.6111902425,1.05591122875C12.8334150925,0.83368624975,13.1667462625,0.77813003175,13.3889715125,1.00035506875L16.944527162500002,4.05591031875C17.2778396625,4.33368611875,17.5000901625,4.77812881875,17.5000901625,5.22257901875C17.5000901625,5.66702361875,17.3334021625,6.05590961875,17.0000905625,6.38924741875L13.4445276225,9.61143401875C13.3334151525,9.66699791875,13.1667462625,9.72255901875,13.0556336625,9.72255901875Z" fill="#000000" fill-opacity="1"/></g></g></svg>
+                    </span>
+                </div>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="20" height="20" viewBox="0 0 20 20"><defs><clipPath id="master_svg0_5396_14842"><rect x="0" y="0" width="20" height="20" rx="0"/></clipPath></defs><g clip-path="url(#master_svg0_5396_14842)"><g><path d="M17.500049984375,8.33337880625L1.666924566375,8.33337880625L1.666924566375,6.66650390625L15.500049984375,6.66650390625L11.916923984375,3.08337900625L13.083798984375,1.91650390625L18.083798984375,6.91650340625C18.333798984375,7.16650390625,18.416923984375,7.49962810625,18.250674984375,7.83337830625C18.167550984375,8.16650390625,17.833798984375,8.33337880625,17.500673984375,8.33337880625L17.500049984375,8.33337880625ZM6.833173784375,18.08337990625L1.833174284375,13.08337990625C1.583174228675,12.83337990625,1.500049293375,12.50025390625,1.666299313375,12.16650390625C1.832549334375,11.83275320625,2.083174344375,11.66650390625,2.416299344375,11.66650390625L18.249423984375,11.66650390625L18.249423984375,13.33337890625L4.416299584375,13.33337890625L7.999424984375,16.91650390625L6.832549084375,18.08337990625L6.833173784375,18.08337990625Z" fill="#000000" fill-opacity="1" style="mix-blend-mode:passthrough"/></g></g></svg>
+                </span>
+                <div class="flex-justify top-item">
+                    <span data-i18n="wallet.cryptoType"></span>
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="10" height="10.000000953674316" viewBox="0 0 10 10.000000953674316"><defs><clipPath id="master_svg0_5396_28353"><rect x="10" y="0" width="10.000000953674316" height="10" rx="0"/></clipPath></defs><g transform="matrix(0,1,-1,0,10,-10)" clip-path="url(#master_svg0_5396_28353)"><g><path d="M13.0556336625,9.72255901875C12.8889715125,9.72255901875,12.7778588525,9.66699791875,12.6667465525,9.55593491875C12.4445276595,9.33368301875,12.5000776905,9.00037191875,12.7223025525,8.77812381875L16.2778398625,5.55591101875C16.3889651625,5.44479851875,16.4445278625,5.33368591875,16.4445278625,5.22257901875C16.4445278625,5.11146641875,16.3889651625,5.00035381875,16.2778398625,4.88924121875L12.6667465525,1.83368593875C12.4445276595,1.61146729875,12.3889715295,1.27812996875,12.6111902425,1.05591122875C12.8334150925,0.83368624975,13.1667462625,0.77813003175,13.3889715125,1.00035506875L16.944527162500002,4.05591031875C17.2778396625,4.33368611875,17.5000901625,4.77812881875,17.5000901625,5.22257901875C17.5000901625,5.66702361875,17.3334021625,6.05590961875,17.0000905625,6.38924741875L13.4445276225,9.61143401875C13.3334151525,9.66699791875,13.1667462625,9.72255901875,13.0556336625,9.72255901875Z" fill="#000000" fill-opacity="1"/></g></g></svg>
+                    </span>
+                </div>
+            </div>
+            <div class="dui-top flex-justify">
+                <div class=" top-item">
+                    <p class="dui-title" data-i18n="account.balanceTitle">账户余额</p>
+                    <p class="dui-num">
+                        0
+                    </p>
+                </div>
+                <div class=" top-item">
+                    <p class="dui-title" data-i18n="wallet.cryptoType"></p>
+                    <p class="dui-num">
+                        0
+                    </p>
+                </div>
+            </div>
+            <div class="login-item">
+                <div class="flex-justify form-al">
+                    <input class="form-money" type="number" id="cashMoney" data-i18n-placeholder="placeholder.password">
+                    <span class="form-all" data-i18n="withdraw.all"></span>
+                </div>
+            </div>
+            <p class="th-item flex-justify">
+                <span data-i18n="withdraw.fee"> </span>
+                <span>
+                    0.00%
+                </span>
+            </p>
+            <p class="th-item flex-justify">
+                <span data-i18n="exchange.rate"></span>
+                <span>
+                   1%
+                </span>
+            </p>
+            <button class="login-button" data-i18n="button.confirm"></button>
+        </div>
+    </div>
+    <div class="modal-overlay"> 
+        <div class="modal-area">
+            <ul class="modal-list list-area">
+                <li class="active">
+                    <img src="./images/cash-img.png" alt="">
+                    <span class="modal-title">USDT(ERC-20)</span>
+                </li>
+                <li>
+                    <img src="./images/cash-img.png" alt="">
+                    <span class="modal-title">USDT(ERC-20)</span>
+                </li>
+                <li>
+                    <img src="./images/cash-img.png" alt="">
+                    <span class="modal-title">USDT(ERC-20)</span>
+                </li>
+                <li>
+                    <img src="./images/cash-img.png" alt="">
+                    <span class="modal-title">USDT(ERC-20)</span>
+                </li>
+            </ul>
+            <ul class="modal-list">
+                <li class="cancel" data-i18n="key_cancel">
+                    取消
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/layer/layer.js"></script>
+    <script src="lang/lang.js"></script>
+    <script src="./js/reset.js"></script>
+    <script>
+        $(".top-item").click(function() {
+            $(".modal-overlay").show()
+        })
+        $(".cancel").click(function() {
+            $(".modal-overlay").hide()
+        })
+        $(".list-area").click(function() {
+            $(".modal-overlay").hide()
+        })
+        $(".money-card").click(function() {
+            window.location.href='./bank-list.html'
+        })
+    </script>
+</body>
+
+</html>

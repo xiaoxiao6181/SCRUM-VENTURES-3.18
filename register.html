@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page.register"></title>
+    <link rel="stylesheet" href="./css/all.css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <style>
+        .register-area{
+            margin:10px auto 0 auto;
+            width:80%;
+        }
+       .reg-th{
+            margin-bottom:30px;
+       }
+       .reg-th span{
+            position: relative;
+       }
+       .reg-th span::after{
+            content:'';
+            position: absolute;
+            left: 10px;
+            bottom: -10px;
+            width: 40px;
+            height: 3px;
+
+            background: #2979FF;
+       }
+       .input-group {
+            padding: 0 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border:1px solid #E1E1E1;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: none;
+            border-radius: 5px;
+            color: #000;
+            font-size: 14px;
+            outline: 0;
+        }
+
+        .input-group input::placeholder {
+            color: #999999;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .forgot-password a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        .show {
+            display: none;
+        }
+
+        .hidden {
+            display: block;
+        }
+        .user-xie{
+            margin:16px 0;
+            color:#000;
+        }
+        .user-xie a{
+            color:#2979FF;
+            text-decoration: none;
+        }
+        .login-button{
+            margin-top:0;
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <span onclick="goBack()" class="back-button"></span>
+        <h1 data-i18n="page.register"></h1>
+        <span></span>
+    </header>
+    <div class="register-area">
+        <p class="reg-th">
+            <span data-i18n="register.title"></span>
+        </p>
+       
+        <div class="input-group flex-start">
+            <input 
+              type="email" 
+              id="email" 
+              placeholder="请输入邮箱地址" 
+              data-i18n-placeholder="register.email.placeholder"
+            />
+        </div>
+        <div class="input-group flex-start">
+            <input 
+              type="text" 
+              id="nickname" 
+              maxlength="20"
+              placeholder="请输入用户昵称" 
+              data-i18n-placeholder="register.nickname.placeholder"
+            />
+        </div>
+        <div class="input-group flex-start">
+            <input 
+              type="text" 
+              id="phone" 
+              placeholder="请输入手机号码" 
+              data-i18n-placeholder="register.phone.placeholder"
+            />
+        </div>
+        
+        <div class="input-group flex-justify">
+            <div class="flex-start">
+                <input 
+                  type="password" 
+                  id="pwd" 
+                  placeholder="密码为6·12位数字、字母或符号" 
+                  data-i18n-placeholder="register.password.placeholder"
+                />
+            </div>
+        </div>
+        <div class="input-group flex-justify">
+            <div class="flex-start">
+                <input 
+                  type="password" 
+                  id="verify_pwd" 
+                  placeholder="请再次输入密码" 
+                  data-i18n-placeholder="register.confirmPassword.placeholder"
+                />
+            </div>
+        </div>
+
+        <!-- 新增邀请码输入框 -->
+        <div class="input-group flex-start">
+            <input 
+              type="text" 
+              id="invite_code" 
+              placeholder="请输入邀请码" 
+              data-i18n-placeholder="register.inviteCode.placeholder"
+            />
+        </div>
+        
+        <p class="user-xie">
+            <span>
+                《<a href="./xieyi.html" data-i18n="register.agreement"> </a>》
+            </span>
+        </p>
+        <button class="login-button" data-i18n="page.register"></button>
+        <div class="forgot-password">
+            <a href="./login.html" class="register-link" data-i18n="register.loginLink"></a>
+        </div>
+    </div>
+    <span class="msg-info msg1" data-i18n="register.password.placeholder"></span>
+    <span class="msg-info msg2" data-i18n="msg.lcsrmmbyz"></span>
+    <span class="msg-info msg3" data-i18n="msg.qsryxdsjh"></span>
+    <span class="msg-info msg4" data-i18n="msg.qsryxdyxdz"></span>
+    <span class="msg-info msg5" data-i18n="register.inviteCode.placeholder"></span>
+    
+    <script src="./js/layer/layer.js"></script>
+    <script src="lang/lang.js"></script>
+    <script src="./js/reset.js"></script>
+    <script>
+        $(".hidden1").click(() => {
+            $(".money1").attr("type", "text")
+          $(".hidden1").hide();
+            $(".show1").show()
+        })
+        $(".show").click(() => {
+          $(".money1").attr("type", "password")
+          $(".show").hide();
+            $(".hidden").show()
+        })
+        $(".hidden2").click(() => {
+            $(".money2").attr("type", "text")
+          $(".hidden2").hide();
+            $(".show2").show()
+        })
+        $(".show2").click(() => {
+          $(".money2").attr("type", "password")
+          $(".show2").hide();
+            $(".hidden2").show()
+        })
+        $(".hidden3").click(() => {
+            $(".money3").attr("type", "text")
+          $(".hidden3").hide();
+            $(".show3").show()
+        })
+        $(".show3").click(() => {
+          $(".money3").attr("type", "password")
+          $(".show3").hide();
+            $(".hidden3").show()
+        })
+        let rules =[]
+        $(".login-button").click(function() {
+                var url = preFixx + "/index/register";
+                i18n.init();
+                rules = [
+                    // 密码必填+长度验证
+                    {
+                        field: 'pwd',
+                        message: $(".msg1").text(),
+                        required: true,
+                        validator: (value) => value.length >= 6 && value.length <= 20
+                    },
+                    // 密码确认验证
+                    {
+                        field: 'verify_pwd',
+                        message: $(".msg2").text(),
+                        required: true,
+                        validator: (value, formData) => value === formData.pwd
+                    },
+                    // 手机号格式验证
+                    {
+                        field: 'phone',
+                        message: $(".msg3").text(),
+                        required: true
+                    },
+                    // 邮箱格式验证
+                    {
+                        field: 'email',
+                        message: $(".msg4").text(),
+                        required: true,
+                        validator: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+                    },
+                    // 新增验证规则：邀请码不能为空
+                    {
+                        field: 'spread_code',
+                        message: $(".msg5").text(),  // 可以自定义错误消息
+                        required: true,
+                    }
+
+                ];
+        
+                let params = {
+                    account: $('#email').val(),
+                    pwd: $('#pwd').val(),
+                    verify_pwd: $('#verify_pwd').val(),
+                    nickname: $('#nickname').val(),
+                    phone: $('#phone').val(),
+                    email: $('#email').val(),
+                    operation_pwd: $('#pwd').val(),
+                    spread_code:$('#invite_code').val(),
+                }
+                if(validateForm(params)) {
+                    sendPostRequest({
+                        url,
+                        type: 'POST',
+                        data: {
+                            ...params
+                        },
+                        successCallback: function(result) {
+                            if(result.code == 200){
+                                layer.msg(result.msg,function(){
+                                    window.location.href="./index.html"
+                                });
+                            } else {
+                                layer.msg(result.msg);
+                            }
+                        },
+                        errorCallback: function(xhr) {
+                            console.error('请求错误', xhr);
+                        }
+                    })
+                }
+            });
+    </script>
+</body>
+</html>

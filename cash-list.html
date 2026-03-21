@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page.withdrawList">提现记录</title>
+    <link rel="stylesheet" href="./css/all.css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <style>
+        .ke-area{
+            margin-top:12px;
+        }
+        .page-header{
+            background-color:#fff;
+        }
+        .ke-bg{
+            background-color:#F8F8F8;
+        }
+        .cash-item{
+            margin-bottom:10px;
+            border-radius:5px;
+            padding:10px;
+            background-color:#fff;
+        }
+        .item-p{
+            margin-bottom:8px;
+        }
+        .cash-p-item{
+            font-size:12px;
+        }
+        .cash-type{
+            margin-right:5px;
+            color:#666666;
+        }
+        .up{
+            color:#E72F2B;
+        }
+        .down{
+            color:#21B060;
+        }
+        .wait{
+            color:#FFC53D;
+        }
+        .alert-area{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width:100%;
+            height:100%;
+        }
+        .area-content{
+            width:90%;
+            padding:16px;
+            border-radius:10px;
+            background:#fff;
+        }
+        .alert-name{
+            font-size:16px;
+        }
+        .content-header{
+            margin-bottom:20px;    
+        }
+        .content-list{
+            list-style:none;
+        }
+        .content-list li{
+            padding:5px 0;
+            list-style:none;
+            font-size:12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .pro-alert{
+            display:none;
+        }
+        .explain{
+            display:none;
+        }
+        .audit-failureReason{
+            max-width:50%;
+            text-align: right;
+        }
+        .cash-explain{
+            margin-top:10px;
+        }
+        .explain-text{
+            color: #999;
+            line-height: 19px;
+            margin-top: 7px;
+        }
+    </style>
+</head>
+<body class="ke-bg">
+    <header class="page-header">
+        <span onclick="goBack()" class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="8.048568725585938" height="14.181901931762695" viewBox="0 0 8.048568725585938 14.181901931762695"><g transform="matrix(-1,0,0,-1,16.097137451171875,28.36380386352539)"><path d="M8.986025805585937,28.363803931762696C8.719358925585938,28.363803931762696,8.541581155585938,28.274914931762694,8.363803385585937,28.097137931762695C8.008247852585937,27.741581931762695,8.097136735585938,27.208247931762696,8.452692505585938,26.852692931762697L14.141582025585937,21.697136831762695C14.319360225585937,21.519358631762696,14.408248425585938,21.341581331762697,14.408248425585938,21.163803131762695C14.408248425585938,20.986024831762695,14.319359325585937,20.808247531762696,14.141582025585937,20.630469831762696L8.363803865585938,15.741581831762694C8.008248329585937,15.386026231762695,7.919359445585937,14.852692961762695,8.274914745585937,14.497137311762696C8.630470275585937,14.141581773762695,9.163803625585938,14.052692891762696,9.519359125585938,14.408248421762694L15.208247625585937,19.297137231762697C15.741580525585938,19.741581931762695,16.097137425585938,20.452693031762696,16.097137425585938,21.163804031762695C16.097137425585938,21.874915131762695,15.830470525585937,22.497137031762698,15.297136825585937,23.030470831762695L9.608247725585937,28.186026931762697C9.430470025585937,28.274915931762695,9.163803125585938,28.363804931762694,8.986025805585937,28.363803931762696Z" fill="#000000" fill-opacity="1" style="mix-blend-mode:passthrough"/></g></svg>
+        </span>
+        <h1 data-i18n="withdrawRecord.title"></h1>
+        <span></span>
+    </header>
+    <div class="ke-area">
+        <div class="container">
+            <div class="cash-list">
+                <!--<div class="cash-item">-->
+                <!--    <div class="flex-justify item-p">-->
+                <!--        <p class="flex-start">-->
+                <!--            <span>-->
+                <!--                时间: -->
+                <!--            </span>-->
+                <!--            <span>-->
+                <!--                20273862 11:11:11-->
+                <!--            </span>-->
+                <!--        </p>-->
+                <!--        <span class="status up">-->
+                <!--            申请依据-->
+                <!--        </span>-->
+                <!--    </div>-->
+                <!--    <div class="flex-justify item-p cash-p-item">-->
+                <!--        <p class="flex-start">-->
+                <!--            <span class="cash-type">-->
+                <!--                类型:-->
+                <!--            </span>-->
+                <!--            <span>-->
+                <!--                USDT-->
+                <!--            </span>-->
+                <!--        </p>-->
+                <!--        <p class="flex-start item-p cash-p-item">-->
+                <!--            <span class="cash-type">-->
+                <!--                手续费:-->
+                <!--            </span>-->
+                <!--            <span class="cash-text">-->
+                <!--                0.23%-->
+                <!--            </span>-->
+                <!--        </p>-->
+                <!--    </div>-->
+                <!--    <div class="flex-justify cash-p-item">-->
+                <!--        <p class="flex-start">-->
+                <!--            <span class="cash-type">-->
+                <!--                提现金额:-->
+                <!--            </span>-->
+                <!--            <span class="cash-nums">-->
+                <!--                100-->
+                <!--            </span>-->
+                <!--        </p>-->
+                <!--        <p class="flex-start">-->
+                <!--            <span class="cash-type">-->
+                <!--                实际到账:-->
+                <!--            </span>-->
+                <!--            <span class="cash-text">-->
+                <!--                99.77-->
+                <!--            </span>-->
+                <!--        </p>-->
+                <!--    </div>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay pro-alert">
+        <div class="alert-area">
+            <div class="area-content">
+                <div class="content-header flex-justify">
+                    <span></span>
+                    <span class="alert-name" data-i18n="withdrawRecord.title"></span>
+                    <span class="alert-close">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="16" height="16" viewBox="0 0 16 16"><defs><clipPath id="master_svg0_5511_09077"><rect x="0" y="0" width="16" height="16" rx="0"/></clipPath></defs><g clip-path="url(#master_svg0_5511_09077)"><g><path d="M1.61462402625,13.538451875L7.15612790625,7.996948275L1.61462402625,2.4539794749999997C1.38171386725,2.221069335,1.38171386725,1.843139645,1.61462402625,1.610229495C1.84753417625,1.377319336,2.22546386625,1.377319336,2.4583740062499997,1.610229495L7.99987790625,7.151733375L13.54284640625,1.610229495C13.77575640625,1.377319336,14.15368640625,1.377319336,14.38659640625,1.610229495C14.61950640625,1.843139645,14.61950640625,2.221069335,14.38659640625,2.4539794749999997L8.84362790625,7.995483375L14.38659640625,13.538451875C14.61950640625,13.771361875,14.61950640625,14.149291875,14.38659640625,14.382201875C14.26940940625,14.497924875,14.11706540625,14.556518875,13.96472140625,14.556518875C13.81237840625,14.556518875,13.66003440625,14.497924875,13.54284640625,14.382201875L8.001342806250001,8.839233375L2.4583740062499997,14.380736875C2.34118652625,14.496459875,2.18884277625,14.555053875,2.03649902625,14.555053875C1.88415527625,14.555053875,1.73181152625,14.496459875,1.61462402625,14.380736875C1.38171386725,14.147826875,1.38171386725,13.771361875,1.61462402625,13.538451875Z" fill="#333303" fill-opacity="1" style="mix-blend-mode:passthrough"/></g></g></svg>
+                    </span>
+                </div>
+                <ul class="content-list">
+                    <li>
+                        <span data-i18n="withdrawRecord.time"></span>
+                        <span class="withdrawRecord-time"></span>
+                    </li>
+                    <li>
+                        <span data-i18n="withdrawRecord.type"></span>
+                        <span class="withdrawRecord-type"></span>
+                    </li>
+                    <li>
+                        <span data-i18n="withdrawRecord.fee" ></span>
+                        <span class="withdrawRecord-fee"></span>
+                    </li>
+                    <li>
+                        <span data-i18n="withdrawRecord.amount"></span>
+                        <span class="withdrawRecord-amount"></span>
+                    </li>
+                    <li>
+                        <span data-i18n="withdrawRecord.actualAmount"></span>
+                        <span class="withdrawRecord-actualAmount"></span>
+                    </li>
+                    <li>
+                        <span data-i18n="status"></span>
+                        <span class="withdrawRecord-status"></span>
+                    </li>
+                    <li class="explain">
+                        <span data-i18n="audit.failureReason"></span>
+                        <span class="audit-failureReason"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/layer/layer.js"></script>
+    <script type="text/javascript" src="./js/clipboard.min.js"></script>
+    <script src="lang/lang.js"></script>
+    <script src="./js/reset.js"></script>
+    <script>
+        let proList = []
+        function getPro() { // 获取钱包地址
+            var url = preFixx + "/index/user/getWithdrawList";
+            sendPostRequest({
+                url,
+                type: 'GET',
+                data: {},
+                successCallback: function(result) {
+                    
+                    if(result.code == 200){
+                        const { data } = result.data;
+                        if(data && data.length) {
+                            proList = data;
+                            let reHtml = "";
+                            data.forEach(item => {
+                                reHtml += `
+                                    <div class="cash-item" data-id="${item.id}">
+                                        <div class="flex-justify item-p">
+                                            <p class="flex-start">
+                                               <span data-i18n="withdrawRecord.time">时间:</span>
+                                                <span>
+                                                    ${item.create_time}
+                                                </span>
+                                            </p>
+                                            ${ item.review_status == 0 ? `<span class="status wait" data-i18n="status.pending">审批中</span>` : "" }
+                                            ${ item.review_status == 1 ? `<span class="status down" data-i18n="status.approved">审批通过</span>` : "" }
+                                            ${ item.review_status == 2 ? `<span class="status up" data-i18n="status.rejected">审批失败</span>` : "" }
+                                        </div>
+                                        <div class="flex-justify item-p cash-p-item">
+                                            <p class="flex-start">
+                                                <span class="cash-type" data-i18n="withdrawRecord.type">类型:</span>
+                                                <span>
+                                                    ${item.pay_name }
+                                                </span>
+                                            </p>
+                                            <p class="flex-start item-p cash-p-item">
+                                                <span class="cash-type" data-i18n="withdrawRecord.fee">手续费:</span>
+                                                <span class="cash-text">
+                                                ${ item.deduct_money }
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="flex-justify cash-p-item">
+                                            <p class="flex-start">
+                                                <span class="cash-type" data-i18n="withdrawRecord.amount">提现金额:</span>
+                                                <span class="cash-nums">
+                                                    ${item.withdraw_money}
+                                                </span>
+                                            </p>
+                                            <p class="flex-start">
+                                                <span class="cash-type" data-i18n="withdrawRecord.actualAmount">实际到账:</span>
+                                                <span class="cash-text">
+                                                    ${item.reality_money }
+                                                    
+                                                </span>
+                                            </p>
+                                        </div>
+                                        ${ item.review_status == 2 ? `<div class="cash-p-item cash-explain" >
+                                            <p class="flex-start cash-type" data-i18n="audit.failureReason"></p>
+                                            <p class="flex-start explain-text">
+                                                ${item.explain }
+                                            </p>
+                                        </div>` : `` }
+                                        
+                                    </div>
+                                
+                                `
+                            })
+                            $(".cash-list").html(reHtml)
+                            i18n.init()     
+                        }
+                    } else {
+                        layer.msg(result.msg);
+                    }
+
+                },
+                errorCallback: function(xhr) {
+                    console.error('请求错误', xhr);
+                }
+            })
+        }
+        $(".cash-list").on('click', '.cash-item', function() {
+            const currId = $(this).attr("data-id");
+            const nowIndex = proList.findIndex(item => item.id == currId);
+            const { create_time, withdraw_money, reality_money, deduct_money, type, explain, review_status, pay_name} = proList[nowIndex]
+            $(".pro-alert").css("display", "flex");
+            $(".withdrawRecord-time").text(create_time);
+            $(".withdrawRecord-fee").text(deduct_money);
+            $(".withdrawRecord-amount").text(withdraw_money);
+            $(".withdrawRecord-actualAmount").text(reality_money);
+            $(".withdrawRecord-type").text(pay_name);
+            status
+            $(".withdrawRecord-status").attr("data-i18n",review_status == 0 ? "status.pending" : review_status == 1 ? "status.approved" : "status.rejected" ).addClass(review_status == 0 ? "wait" : review_status == 1 ? "down" : "up" )
+            if(review_status == 2) {
+                $(".explain").show()
+                $(".audit-failureReason").text(explain) 
+            } else {
+                $(".explain").hide()
+                $(".audit-failureReason").text("") 
+            }
+            i18n.init()  
+        })
+        $(".alert-close").click(function() {
+            $(".pro-alert").css("display", "none");
+        })
+        getPro()
+    </script>
+</body>
+</html>

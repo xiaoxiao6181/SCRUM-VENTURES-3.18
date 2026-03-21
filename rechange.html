@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page.rechange"></title>
+    <link rel="stylesheet" href="./css/all.css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <style>
+        .rechange-top{
+            padding-bottom:10px;
+            font-weight:bold;
+            border-bottom: 1px solid #ebebeb;
+        }
+        .rechange-area{
+            margin:20px auto;
+            width:120px;
+            height:120px;
+            border-radius:10px;
+            border: 1px solid #ebebeb;
+            text-align: center;
+        }
+        .rechange-area img{
+            width:100%;
+            height:100%;
+        }
+        .rechange-icon{
+            margin-right:10px;
+        }
+        .pro-img{
+            width:30px;
+        }
+        .rechange-th {
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #666666;
+        }
+        .rechange-al{
+            height:35px;
+            border-bottom:1px solid #ebebeb;
+        }
+        .form-money{
+            border:none;
+            width:80%;
+            height:100%;
+            outline:0;
+        }
+        .money-input{
+            width: 100%;
+            border-radius: 5px;
+            outline: 0;
+            padding: 0 10px;
+            border: 1px solid #E1E1E1;
+            color: #000;
+            height: 35px;
+            line-height: 35px;
+        }
+        .rechange-form-item{
+            margin-bottom:12px;
+        }
+        .layui-upload-file{
+            display:none;
+        }
+        .login-button{
+            margin-top:0;
+        }
+        .upload{
+            width:100%;    
+        }
+        .upload img{
+            width:150px;
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <span onclick="goBack()" class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="8.048568725585938" height="14.181901931762695" viewBox="0 0 8.048568725585938 14.181901931762695"><g transform="matrix(-1,0,0,-1,16.097137451171875,28.36380386352539)"><path d="M8.986025805585937,28.363803931762696C8.719358925585938,28.363803931762696,8.541581155585938,28.274914931762694,8.363803385585937,28.097137931762695C8.008247852585937,27.741581931762695,8.097136735585938,27.208247931762696,8.452692505585938,26.852692931762697L14.141582025585937,21.697136831762695C14.319360225585937,21.519358631762696,14.408248425585938,21.341581331762697,14.408248425585938,21.163803131762695C14.408248425585938,20.986024831762695,14.319359325585937,20.808247531762696,14.141582025585937,20.630469831762696L8.363803865585938,15.741581831762694C8.008248329585937,15.386026231762695,7.919359445585937,14.852692961762695,8.274914745585937,14.497137311762696C8.630470275585937,14.141581773762695,9.163803625585938,14.052692891762696,9.519359125585938,14.408248421762694L15.208247625585937,19.297137231762697C15.741580525585938,19.741581931762695,16.097137425585938,20.452693031762696,16.097137425585938,21.163804031762695C16.097137425585938,21.874915131762695,15.830470525585937,22.497137031762698,15.297136825585937,23.030470831762695L9.608247725585937,28.186026931762697C9.430470025585937,28.274915931762695,9.163803125585938,28.363804931762694,8.986025805585937,28.363803931762696Z" fill="#000000" fill-opacity="1" style="mix-blend-mode:passthrough"/></g></svg>
+        </span>
+        <h1 data-i18n="page.rechange"></h1>
+        <span class="rechange-list" onclick="window.location.href='/kefu.html'">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="24" height="24" viewBox="0 0 24 24"><defs><clipPath id="master_svg0_5396_9471"><rect x="0" y="0" width="24" height="24" rx="0"/></clipPath></defs><g clip-path="url(#master_svg0_5396_9471)"><g><path d="M20.722782625,10.58161354375C20.664327625,5.81198814375,16.784202625,1.96240234375,12.000258625,1.96240234375C7.216313325,1.96240234375,3.336211425,5.81198814375,3.277640625,10.58161354375C2.476945455,11.22178454375,1.962890625,12.20466034375,1.962890625,13.30903534375C1.962890625,15.23686534375,3.526101625,16.80049734375,5.454141125,16.80049734375C6.295523625,16.80049734375,7.067062825,16.502229343750002,7.669781725,16.00697234375L6.024938125,9.868152643750001C5.838633325,9.83782434375,5.648883124999999,9.81764504375,5.454164725,9.81764504375C5.325867925,9.81764504375,5.1997504249999995,9.82559014375,5.074875325,9.83934784375C5.495672425,6.38583184375,8.432720225,3.70807404375,12.000375625,3.70807404375C15.567539625,3.70807404375,18.505031625,6.38580844375,18.925710625,9.83934784375C18.801351625,9.82568354375,18.674812625,9.81764504375,18.546493625,9.81764504375C18.351844625,9.81764504375,18.161624625,9.837871543750001,17.975204625,9.868152643750001L16.330852625,16.00411434375C16.796015625000003,16.38602634375,17.361657625,16.65002734375,17.982234625,16.751018343749998C17.158687625,17.635807343750002,16.111335625000002,18.30986934375,14.926500625,18.67448834375L14.782031625,18.81876734375C14.412422625,18.13931634375,13.701047625,17.672863343750002,12.873234625,17.672863343750002C11.667914425,17.672863343750002,10.691157325,18.64959734375,10.691157325,19.85531434375C10.691157325,21.06073034375,11.667867625,22.03743934375,12.873234625,22.03743934375C13.862555625,22.03743934375,14.687742625,21.37486034375,14.955702625,20.47280134375C17.363952625,19.88243134375,19.381381625,18.29712134375,20.540202625,16.17243934375C21.444772625,15.54157234375,22.037835625,14.49520534375,22.037835625,13.30896334375C22.037788625,12.20486934375,21.523265625,11.22166724375,20.722946625,10.58151814375L20.722782625,10.58161354375Z" fill="#272636" fill-opacity="1" style="mix-blend-mode:passthrough"/></g></g></svg>
+        </span>
+    </header>
+    <div class="ke-area">
+        <div class="container">
+            <p class="rechange-top flex-start">
+                <span  class="rechange-icon">
+                    <img class="pro-img" src="">    
+                </span>
+                <span  class="rechange-al-th"> </span>
+            </p>
+            <div class="rechange-area">
+                 <img src="./images/rechange-img.png" alt="">
+            </div>
+            <div class="rechange-form-item">
+                <p class="rechange-th" data-i18n="wallet.title" ></p>
+                <div class="rechange-al flex-justify">
+                    <input 
+                      type="text" 
+                      id="xxoo" 
+                      value="" 
+                      class="form-money" 
+                      placeholder="请输入钱包地址" 
+                      readonly 
+                      data-i18n-placeholder="placeholder.walletAddress"
+                    />
+                    <span clas="copy" onclick="copyText()">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="16" height="16" viewBox="0 0 16 16"><defs><clipPath id="master_svg0_5396_14264"><rect x="0" y="0" width="16" height="16" rx="0"/></clipPath></defs><g clip-path="url(#master_svg0_5396_14264)"><g><path d="M13.9093342,0.65625L5.4246669,0.65625C4.63800001,0.65625,4,1.26891661,4,2.0242499L4,3.2095833L5.3439999,3.2095833L5.3439999,2.4522499C5.3439999,2.2002498,5.5566664,1.99625,5.8186665,1.99625L13.508667,1.99625C13.770668,1.99625,13.9833336,2.2002498,13.9833336,2.4522499L13.9833336,10.879582C13.9833336,10.999582,13.9333334,11.114916,13.8433332,11.198916C13.7525129,11.283587,13.6321306,11.329299,13.5080004,11.32625L11.4666672,11.32625L11.4666672,12.656249L13.907999,12.656249C14.691332,12.656249,15.327999,12.049583,15.332665,11.297585L15.332665,2.0242499C15.333334,1.26891661,14.695335,0.65625,13.9093342,0.65625Z" fill="#000000" fill-opacity="1" style="mix-blend-mode:passthrough"/></g><g><path d="M10.57583900625,3.34375L2.09117070625,3.34375C1.30450397625,3.34375,0.66650390625,3.95641661,0.66650390625,4.7117499L0.66650390625,5.897083L2.0105040062499997,5.897083L2.0105040062499997,5.1397498C2.0105040062499997,4.8877499,2.22317060625,4.68375,2.48517060625,4.68375L10.17517090625,4.68375C10.43717290625,4.68375,10.64983750625,4.8877499,10.64983750625,5.1397498L10.64983750625,13.567085C10.64983750625,13.687083,10.59983830625,13.802417,10.50983710625,13.886416C10.41901590625,13.971087,10.29863450625,14.016799,10.17450430625,14.01375L8.13317110625,14.01375L8.13317110625,15.34375L10.57450480625,15.34375C11.35783890625,15.34375,11.99450590625,14.737083,11.99917090625,13.985085L11.99917090625,4.7117499C11.99983790625,3.95641643,11.36183990625,3.34374976158142,10.57583900625,3.34375Z" fill="#000000" fill-opacity="1" style="mix-blend-mode:passthrough"/></g><g><path d="M0.66772514581692,4.71175L0.66772514581692,13.985085C0.672391832775,14.737083,1.309058729375,15.34375,2.0923920093749997,15.34375L8.533726709375,15.34375L8.533726709375,14.01375L2.491725309375,14.01375C2.367595309375,14.016799,2.247212609375,13.971087,2.156391809375,13.886416C2.0674088093750003,13.80403,2.016693509375,13.688351,2.016391709375,13.567085L2.016391709375,5.1397499C2.016391709375,4.8877501,2.229058509375,4.6837502,2.491058309375,4.6837502L10.181059809375,4.6837502C10.443059909375,4.6837502,10.655725509375,4.8877501,10.655725509375,5.1397499L10.655725509375,5.8970833L12.000392609375,5.8970833L12.000392609375,4.71175C12.000392609375,3.95641661,11.362392609375,3.34375,10.575726509375,3.34375L2.091058709375,3.34375C1.305058659375,3.34375,0.667058586955,3.95641661,0.66772514581692,4.71175Z" fill="#000000" fill-opacity="1" style="mix-blend-mode:passthrough"/></g><g><path d="M4.00016266375,6.010986328125L8.666828593750001,6.010986328125C9.03501849375,6.01098680496213,9.333495593750001,6.309463468125,9.333495593750001,6.677653248125C9.333495593750001,7.045843028125,9.03501849375,7.344320128125,8.666828593750001,7.344319728125L4.00016266375,7.344319728125C3.63197279375,7.344320128125,3.33349609375,7.045843028125,3.33349609375,6.677653248125C3.33349609375,6.309463468125,3.63197279375,6.01098680496213,4.00016266375,6.010986328125ZM4.00016266375,8.677652328125L8.666828593750001,8.677652328125C9.03501849375,8.677652328125,9.333495593750001,8.976129528125,9.333495593750001,9.344319128125C9.333495593750001,9.712508928125,9.03501849375,10.010985628124999,8.666828593750001,10.010985628124999L4.00016266375,10.010985628124999C3.63197279375,10.010985628124999,3.33349609375,9.712508928125,3.33349609375,9.344319128125C3.33349609375,8.976129528125,3.63197279375,8.677652328125,4.00016266375,8.677652328125ZM4.00016266375,11.344318828125001L8.666828593750001,11.344318828125001C9.03501849375,11.344318828125001,9.333495593750001,11.642795528125,9.333495593750001,12.010984928125C9.333495593750001,12.379174728125001,9.03501849375,12.677651928125,8.666828593750001,12.677651928125L4.00016266375,12.677651928125C3.63197279375,12.677651928125,3.33349609375,12.379174728125001,3.33349609375,12.010984928125C3.33349609375,11.642795528125,3.63197279375,11.344318828125001,4.00016266375,11.344318828125001Z" fill="#000000" fill-opacity="1" style="mix-blend-mode:passthrough"/></g></g></svg>
+                    </span>
+                </div>
+            </div>
+            <div class="rechange-form-item">
+                <p class="rechange-th" data-i18n="recharge.amount.title"></p>
+                <div class="rechange-money flex-justify">
+                    <input 
+                      type="number" 
+                      maxlength="1000000000" 
+                      value="" 
+                      class="money-input moneys" 
+                      placeholder="请输入充值数量" 
+                      data-i18n-placeholder="recharge.amount.placeholder"
+                    />
+                </div>
+            </div>
+            <div class="rechange-form-item">
+                <p class="rechange-th" data-i18n="remark.title"></p>
+                <div class="rechange-money flex-justify">
+                    <input 
+                      type="text" 
+                      maxlength="400" 
+                      value="" 
+                      class="money-input remark" 
+                      placeholder="请输入充值备注" 
+                      data-i18n-placeholder="remark.placeholder"
+                    />
+                </div>
+            </div>
+            <div class="rechange-form-item">
+                <p class="rechange-th" data-i18n="voucher.title"></p>
+                <div class="upload" id="uploadLink">
+                    <img  id="uploadUrl" src="./images/ping-icon.png" alt="">
+                </div>
+            </div>
+            <button class="login-button" onclick="submitForm()" data-i18n="button.confirm"></button>
+        </div>
+    </div>
+    <span class="msg-info msg1" data-i18n="msg.yfz"></span>
+    <span class="msg-info msg2" data-i18n="recharge.amount.placeholder"></span>
+    <span class="msg-info msg3" data-i18n="msg.qscczpz"></span>
+    <span class="msg-info msg4" data-i18n="msg.scsb"></span>
+    <script type="text/javascript" src="./js/layer/layer.js"></script>
+    <script type="text/javascript" src="./js/layui.js"></script>
+    <script type="text/javascript" src="./js/clipboard.min.js"></script>
+    <script src="lang/lang.js"></script>
+    <script src="./js/reset.js"></script>
+    <script>
+       function getUrlParam(name) {
+              const queryString = window.location.search;
+              const params = new URLSearchParams(queryString);
+              return params.get(name);
+        }
+        const currId = getUrlParam("id");
+        let pic = ''
+        let currEnt = {}
+        function getList() {
+            var url = preFixx + "/index/system/getPayModeList";
+            sendPostRequest({
+                url,
+                type: 'GET',
+                data: {},
+                successCallback: function(result) {
+                    if(result.code == 200){
+                        const { code, data } = result;
+                        if(data && data.length) {
+                            const indexs = data.findIndex(item => item.id == currId)
+                            currEnt = data[indexs];
+                            $(".pro-img").attr("src", setUrl(currEnt.channel_logo))
+                            $(".rechange-al-th").text(currEnt.pay_name)
+                            $(".rechange-area img").attr("src", preFixx + '/' + currEnt.qrcode || '')
+                            $("#xxoo").val(currEnt.link_url)
+                        }
+                    } else {
+                        layer.msg(result.msg);
+                    }
+                    
+                },
+                errorCallback: function(xhr) {
+                    console.error('请求错误', xhr);
+                }
+            })
+        }
+        function setUrl(url) {
+            if(!url || url == null) {
+                    return './images/pay-img.png'
+            } else {
+                if(url.includes('http')) {
+                    return url
+                } else {
+                    return preFixx + '/' + url
+                }
+            }
+        }
+        layui.use('upload', function(){
+            var upload = layui.upload;
+            var uploadInst = upload.render({
+                elem: '#uploadUrl' //绑定元素
+                ,url: preFixx + '/index/file/upload' //上传接口
+                ,headers: { // 严格使用小写header
+                    token: sessionStorage.getItem('token') || 'null',
+                    Thinklang: sessionStorage.getItem('userLang') || 'zh-cn'
+                },done: function(res){
+                    if(res.code == 200){
+                        pic = res.data.file;
+                        $("#uploadUrl").attr("src", preFixx + '/' +pic)
+                    }
+                }
+                ,error: function(){
+                    layer.msg($(".msg4").text());
+                }
+            });
+        })
+        // 复制
+        async function copyText() {
+            const text = $('#xxoo').val();
+            try {
+                // 使用现代Clipboard API
+                await navigator.clipboard.writeText(text);
+                layer.msg($(".msg1").text());
+            } catch (err) {
+                // 兼容旧浏览器的备用方案
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                layer.msg($(".msg1").text());
+            } 
+        }
+        function submitForm() {
+            if($(".moneys").val() == '') {
+                layer.msg($(".msg2").text());
+                return false;
+            }
+            if(pic == '') {
+                layer.msg($(".msg3").text());
+                return false;
+            }
+            var url = preFixx + "/index/user/submitRecharge";
+            sendPostRequest({
+                url,
+                type: 'POST',
+                data: {
+                    money: $(".moneys").val(),
+                    pay_storageImage: pic,
+                    pay_type:  currEnt.type,
+                    remark : $(".remark").val(),
+                    type: 2,
+                    payment_mode_id: currEnt.id
+                },
+                successCallback: function(result) {
+                    if(result.code == 200){
+                        const { code, data } = result;
+                        layer.msg(result.msg);
+                         window.location.href = './rechange-list.html'
+                    } else {
+                        layer.msg(result.msg);
+                    }
+                    
+                },
+                errorCallback: function(xhr) {
+                    console.error('请求错误', xhr);
+                }
+            })
+        }
+    	getList()
+    </script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page.card"></title>
+    <link rel="stylesheet" href="./css/all.css">
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <style>
+        .ke-area {
+            margin-top: 20px;
+        }
+
+        .rechange-th {
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #666666;
+        }
+        .cash-top {
+            padding-bottom: 12px;
+            font-size: 14px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #ebebeb;
+        }
+
+        .cah-icon {
+            margin-right: 10px;
+            width: 30px;
+        }
+
+        .cah-icon img {
+            width: 100%;
+        }
+
+
+        .money-input {
+            width: 100%;
+            border-radius: 5px;
+            outline: 0;
+            padding: 0 10px;
+            border: 1px solid #E1E1E1;
+            color: #000;
+            height: 35px;
+            line-height: 35px;
+        }
+
+        .rechange-form-item {
+            margin-bottom: 12px;
+        }
+        .bzmc{
+            display: flex;
+            justify-content: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .bzmc li{
+            list-style:none;
+            margin-right:2.3%;
+            margin-bottom:8px;
+            padding:10px 15px;
+            width:23%;
+            border-radius:5px;
+            border:1px solid #ebebeb;
+            text-align: center;
+        }
+        .bzmc li:nth-child(4n){
+            margin-right:0;
+        }
+        .bzmc li.active{    
+            border:1px solid #3389FA;
+            color:#3389FA;
+        }
+        .modal-overlay{
+            display:none;
+        }
+        .list-area{
+            max-height:400px;
+            overflow-y:scroll ;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="page-header">
+        <span onclick="goBack()" class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"
+                width="8.048568725585938" height="14.181901931762695"
+                viewBox="0 0 8.048568725585938 14.181901931762695">
+                <g transform="matrix(-1,0,0,-1,16.097137451171875,28.36380386352539)">
+                    <path
+                        d="M8.986025805585937,28.363803931762696C8.719358925585938,28.363803931762696,8.541581155585938,28.274914931762694,8.363803385585937,28.097137931762695C8.008247852585937,27.741581931762695,8.097136735585938,27.208247931762696,8.452692505585938,26.852692931762697L14.141582025585937,21.697136831762695C14.319360225585937,21.519358631762696,14.408248425585938,21.341581331762697,14.408248425585938,21.163803131762695C14.408248425585938,20.986024831762695,14.319359325585937,20.808247531762696,14.141582025585937,20.630469831762696L8.363803865585938,15.741581831762694C8.008248329585937,15.386026231762695,7.919359445585937,14.852692961762695,8.274914745585937,14.497137311762696C8.630470275585937,14.141581773762695,9.163803625585938,14.052692891762696,9.519359125585938,14.408248421762694L15.208247625585937,19.297137231762697C15.741580525585938,19.741581931762695,16.097137425585938,20.452693031762696,16.097137425585938,21.163804031762695C16.097137425585938,21.874915131762695,15.830470525585937,22.497137031762698,15.297136825585937,23.030470831762695L9.608247725585937,28.186026931762697C9.430470025585937,28.274915931762695,9.163803125585938,28.363804931762694,8.986025805585937,28.363803931762696Z"
+                        fill="#000000" fill-opacity="1" style="mix-blend-mode:passthrough" />
+                </g>
+            </svg>
+        </span>
+        <h1 data-i18n="wallet.title"></h1>
+        <span class="rechange-list">
+        </span>
+    </header>
+    <div class="ke-area">
+        <div class="container">
+            <div class="rechange-form-item">
+                <p class="rechange-th" data-i18n="wallet.paymentMethod"></p>
+                <div class="cash-top flex-justify">
+                <div class="flex-start">
+                    <span class="cah-icon">
+                        <img src="./images/cash-img.png" alt="">
+                    </span>
+                    <span class="cah-title" data-i18n="wallet.cryptoType"></span>
+                </div>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="16" height="15.999999046325684" viewBox="0 0 16 15.999999046325684"><defs><clipPath id="master_svg0_5396_14769"><rect x="0" y="0" width="16" height="15.999999046325684" rx="0"/></clipPath></defs><g clip-path="url(#master_svg0_5396_14769)"><g><path d="M4.888623175,15.556141578125C4.621963735,15.556141578125,4.444183495,15.467244578125,4.266403825,15.289544578125C3.910853636,14.933940578125,3.999733675,14.400642578125,4.355293425,14.045045578125L10.044152775,8.889505878125C10.221952875,8.711725678125,10.310853475,8.533945578125,10.310853475,8.356174478125C10.310853475,8.178394278125001,10.221952875,8.000614178125,10.044152775,7.822833978125L4.266403825,2.933946178125C3.910853636,2.5783964781249997,3.821963835,2.0450566981250002,4.177513735,1.689506768125C4.533073485,1.333946831125,5.066403275,1.245056898125,5.421963675,1.600616918125L11.110851775,6.489504778125C11.644152175,6.933946178125,11.999752975,7.645054378125,11.999752975,8.356174478125C11.999752975,9.067285978125,11.733051775,9.689503678125,11.199753775,10.222844078125L5.510853375,15.378341578125C5.333073475,15.467244578125,5.066403275,15.556141578125,4.888623175,15.556141578125Z" fill="#000000" fill-opacity="1"/></g></g></svg>
+                </span>
+            </div>
+            </div>
+            <div class="rechange-form-item usdt-item">
+                <p class="rechange-th" data-i18n="wallet.walletName"></p>
+                <div class="rechange-money flex-justify">
+                    <input type="text" 
+                        class="money-input" 
+                        id="wallet_name" 
+                        placeholder="" 
+                        data-i18n-placeholder="placeholder.walletName"
+                    />
+                </div>
+            </div>
+            <div class="rechange-form-item usdt-item">
+                <p class="rechange-th" data-i18n="wallet.walletAddress"></p>
+                <div class="rechange-money flex-justify">
+                    <input type="text" 
+                        class="money-input" 
+                        maxlength="60" 
+                        id="wallet_address" 
+                        placeholder="" 
+                        data-i18n-placeholder="placeholder.walletAddress"
+                    />
+                </div>
+            </div>
+            
+            <div class="rechange-form-item pay-item">
+                <p class="rechange-th" data-i18n="wallet.receiverName"></p>
+                <div class="rechange-money flex-justify">
+                    <input type="text" 
+                        class="money-input" 
+                        id="bank_user_name" 
+                        placeholder="" 
+                        data-i18n-placeholder="placeholder.receiverName"
+                    />
+                </div>
+            </div>
+            <!--<div class="rechange-form-item pay-item">-->
+            <!--    <p class="rechange-th">-->
+            <!--        银行姓名-->
+            <!--    </p>-->
+            <!--    <div class="rechange-money flex-justify">-->
+            <!--        <input type="text" class="money-input" id="bank_name" placeholder="请输入银行姓名">-->
+            <!--    </div>-->
+            <!--</div>-->
+            <div class="rechange-form-item pay-item">
+                <p class="rechange-th" data-i18n="wallet.bankBranch"></p>
+                <div class="rechange-money flex-justify">
+                    <input type="text" 
+                       class="money-input" 
+                       id="bank_branch_name" 
+                       placeholder="请输入开户行" 
+                       data-i18n-placeholder="placeholder.bankBranch"
+                   />
+                </div>
+            </div>
+            <div class="rechange-form-item pay-item">
+                <p class="rechange-th" data-i18n="wallet.bankAccount"></p>
+                <div class="rechange-money flex-justify">
+                    <input type="text" 
+                        class="money-input" 
+                        minlength="9" 
+                        maxlength="100" 
+                        id="bank_account" 
+                        placeholder="请输入银行账号" 
+                        data-i18n-placeholder="placeholder.bankAccount"
+                    />
+                </div>
+            </div>
+            <button class="login-button" data-i18n="button.confirm"></button>
+        </div>
+    </div>
+    <div class="modal-overlay"> 
+        <div class="modal-area">
+            <ul class="modal-list list-area">
+                <!--<li class="active">-->
+                <!--    <img src="./images/cash-img.png" alt="">-->
+                <!--    <span class="modal-title" data-i18n="key_usdt_erc20">USDT(ERC-20)</span>-->
+                <!--</li>-->
+            </ul>
+            <ul class="modal-list">
+                <li class="cancel" data-i18n="button.cancel"></li>
+            </ul>
+        </div>
+    </div>
+    
+    <span class="msg-info msg1" data-i18n="msg.qsrqbdz"></span>
+    <span class="msg-info msg2" data-i18n="msg.qbdzbnwk"></span>
+    <span class="msg-info msg3" data-i18n="msg.yhzhbnwk"></span>
+    <span class="msg-info msg5" data-i18n="msg.yhzBbnwk"></span>
+    <script type="text/javascript" src="./js/layer/layer.js"></script>
+    <script src="lang/lang.js"></script>
+    <script src="./js/reset.js"></script>
+    <script>
+        $(".hidden").click(() => {
+            $(".form-money").attr("type", "text")
+          $(".hidden").hide();
+            $(".show").show()
+        })
+        $(".show").click(() => {
+          $(".form-money").attr("type", "password")
+          $(".show").hide();
+            $(".hidden").show()
+        })
+        $(".cash-top").click(function() {
+            $(".modal-overlay").show()
+        })
+        $(".cancel").click(function() {
+            $(".modal-overlay").hide()
+        })
+        let allPayList = []
+        let currPayment = {}
+        function getRechange() { // 获取钱包地址
+            var url = preFixx + "/index/system/getPayModeList";
+            sendPostRequest({
+                url,
+                type: 'GET',
+                data: { },
+                successCallback: function(result) {
+                    if(result.code == 200){
+                        const { data } = result;
+                        if(data) {
+                            let reHtml = '';
+                            data.forEach((item, index) => {
+                                reHtml += `
+                                    <li class="${index == 0 ? 'active' : ''}" data-id="${item.id}">
+                                        <img src="${preFixx + '/' + item.channel_logo}" alt="">
+                                        <span class="modal-title">${item.pay_name}</span>
+                                    </li>
+                                `
+                            })
+                            allPayList = data;
+                            $(".list-area").html(reHtml)
+                            currPayment = data[0]
+                            setDefault()
+                        }
+                    } else {
+                        layer.msg(result.msg);
+                    }
+
+                },
+                errorCallback: function(xhr) {
+                    console.error('请求错误', xhr);
+                }
+            })
+        }
+        function setDefault() {
+            $(".cah-icon img").attr("src", preFixx +  '/' + currPayment.channel_logo)
+            $(".cah-title").text(currPayment.pay_name)
+            if(currPayment.type == 1) {
+                $(".usdt-item").show();
+                $(".pay-item").hide();
+            } else {
+                $(".usdt-item").hide();
+                $(".pay-item").show();
+            }
+        }
+        $(".list-area").on('click', 'li', function() {
+            const currId = $(this).attr("data-id");
+            const nowIndex = allPayList.findIndex(item => item.id == currId);
+            currPayment = allPayList[nowIndex];
+            $(".modal-overlay").hide()
+            setDefault()
+        })
+        getRechange()
+        $(".login-button").click(function() {
+            if(currPayment.type == 1) {
+                if($("#wallet_address").val() == "") {
+                    layer.msg($(".msg1").text())
+                    return false;
+                  }
+                  if($("#wallet_name").val() == "") {
+                    layer.msg($(".msg2").text())
+                    return false;
+                  }
+                  
+            } else {
+                if($("#bank_account").val() == "") {
+                    layer.msg($(".msg3").text())
+                    return false;
+                  }
+                // if($("#bank_name").val() == "") {
+                //     layer.msg("银行名称不能为空")
+                //     return false;
+                //   }
+                  if($("#bank_branch_name").val() == "") {
+                    layer.msg($(".msg5").text())
+                    return false;
+                  }
+                  
+            }
+            var url = preFixx + "/index/user/submitWithdrawAccount";
+            sendPostRequest({
+                url,
+                type: 'POST',
+                data: {
+                    payment_mode_id: currPayment.id,
+                    // bank_name: $("#bank_name").val(),
+                    bank_branch_name: $("#bank_branch_name").val(),
+                    wallet_name: $("#wallet_name").val(),
+                    wallet_address: $("#wallet_address").val(),
+                    bank_account: $("#bank_account").val(),
+                    bank_user_name: $("#bank_user_name").val(),
+                    
+                },
+                successCallback: function(result) {
+                    if(result.code == 200){
+                        const { data } = result;
+                        if(data) {
+                            layer.msg(result.msg);
+                            window.location.href="./bank-list.html"
+                        }
+                    } else {
+                        layer.msg(result.msg);
+                    }
+
+                },
+                errorCallback: function(xhr) {
+                    console.error('请求错误', xhr);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
