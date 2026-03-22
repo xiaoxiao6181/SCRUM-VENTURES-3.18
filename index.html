@@ -134,6 +134,18 @@
     <script src="lang/lang.js"></script>
     <script src="./js/reset.js"></script>
     <script>
+        function getLocalizedMessage(key) {
+          try {
+              const lang = sessionStorage.getItem("userLang") || "zh-fn";
+              if (window.langData && window.langData[lang]) {
+                  return window.langData[lang][key] || key;
+              }
+
+              return key;
+          } catch (e) {
+              return key;
+          }
+      }
         $(".hidden").click(() => {
             $(".form-money").attr("type", "text")
           $(".hidden").hide();
