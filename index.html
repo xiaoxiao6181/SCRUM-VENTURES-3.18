@@ -167,22 +167,19 @@
                 data: {},
                 successCallback: function(result) {
 
-                    // ✅ 统一翻译（关键！！）
-                    const message = getLocalizedMessage(result.msg) || result.msg;
-
-                    // ✅ 只提示一次
-                    layer.msg(message);
-
                     if(result.code == 200){
-                        const { token } = result.data;
+                        const { data } = result;
 
-                        sessionStorage.setItem("token", token);
-                        sessionStorage.setItem("isFirst", "true");
+                        if(data.length) {
+                            const nowIndex = data.findIndex(item => item.key == 'loging_log')
+                            if(nowIndex != -1) {
+                                $(".logo img").attr("src", preFixx + '/' + data[nowIndex].value)  
+                            }
+                        }
 
-                        // ✅ 延迟跳转（等提示显示）
-                        setTimeout(function(){
-                            window.location.href = "./home.html";
-                        }, 1500);
+                    } else {
+                        const message = getLocalizedMessage(result.msg) || result.msg;
+                        layer.msg(message);
                     }
                },
                 errorCallback: function(xhr) {
