@@ -1,5 +1,6 @@
 // 日语
 const jp_list = {
+  "chhmmcw": "アカウントまたはパスワードが間違っています",
   "page.login": "ログイン",
   "login.account": "アカウント",
   "login.account.placeholder": "アカウントを入力してください",
@@ -311,6 +312,7 @@ const jp_list = {
 };
 // 繁体中文
 const hk_list = {
+  "chhmmcw": "帳號或密碼錯誤",
   "page.login": "登錄",
   "login.account": "賬戶",
   "login.account.placeholder": "請輸入賬戶",
@@ -622,6 +624,7 @@ const hk_list = {
 };
 // 英语
 const en_list = {
+  "chhmmcw": "Incorrect account or password",
   "page.login": "Login",
   "login.account": "Email",
   "login.account.placeholder": "Please enter your Email",
@@ -933,6 +936,7 @@ const en_list = {
 };
 // 韩语
 const kor_list = {
+  "chhmmcw": "계정 또는 비밀번호가 틀렸습니다",
   "page.login": "로그인",
   "login.account": "계정",
   "login.account.placeholder": "계정을 입력하세요",
@@ -1244,6 +1248,7 @@ const kor_list = {
 };
 // 泰语
 const th_list = {
+  "chhmmcw": "บัญชีผู้ใช้หรือรหัสผ่านผิด",
   "page.login": "เข้าสู่ระบบ",
   "login.account": "บัญชี",
   "login.account.placeholder": "กรุณาใส่บัญชี",
@@ -1555,6 +1560,7 @@ const th_list = {
 }
 // 印地语
 const yindi_list = {
+  "chhmmcw": "खाता या पासवर्ड गलत है।",
   "page.login": "लॉगिन करें",
   "login.account": "खाता",
   "login.account.placeholder": "कृपया खाता दर्ज करें",
@@ -1867,6 +1873,7 @@ const yindi_list = {
 }
 // 简体中文
 const zh_list = {
+  "chhmmcw": "账号或密码错误",
   "page.login": "登录",
   "login.account": "邮箱地址",
   "login.account.placeholder": "请输入邮箱地址",
@@ -2182,6 +2189,7 @@ const zh_list = {
 };
 // 法语
 const fr_list = {
+  "chhmmcw": "Compte ou mot de passe incorrect",
   "page.login": "Connexion",
   "login.account": "Adresse e-mail",
   "login.account.placeholder": "Veuillez entrer l'adresse e-mail",
@@ -2495,6 +2503,7 @@ const fr_list = {
 }
 // 西班牙语
 const es_list = {
+  "chhmmcw": "Cuenta o contraseña incorrecta",
   "page.login": "Iniciar sesión",
   "login.account": "Correo electrónico",
   "login.account.placeholder": "Ingrese su correo electrónico",
@@ -2808,6 +2817,7 @@ const es_list = {
 }
 // 葡萄牙语
 const pt_list = {
+  "chhmmcw": "Conta ou senha incorreta",
   "page.login": "Entrar",
   "login.account": "Endereço de e-mail",
   "login.account.placeholder": "Por favor, insira o endereço de e-mail",
@@ -3121,6 +3131,7 @@ const pt_list = {
 }
 // 丹麦语
 const da_list = {
+  "chhmmcw": "Forkert konto eller adgangskode",
   "page.login": "Log ind",
   "login.account": "E-mail-adresse",
   "login.account.placeholder": "Indtast e-mail-adresse",
@@ -3434,6 +3445,7 @@ const da_list = {
 }
 // 波兰语
 const pl_list = {
+  "chhmmcw": "Nieprawidłowe konto lub hasło",
   "page.login": "Zaloguj się",
   "login.account": "Adres e-mail",
   "login.account.placeholder": "Wprowadź adres e-mail",
@@ -3747,6 +3759,7 @@ const pl_list = {
 }
 // 德语
 const de_list = {
+  "chhmmcw": "Falsches Konto oder Passwort",
   "page.login": "Anmelden",
   "login.account": "E-Mail-Adresse",
   "login.account.placeholder": "Bitte geben Sie Ihre E-Mail-Adresse ein",
@@ -4060,6 +4073,7 @@ const de_list = {
 }
 // 俄语
 const ru_list = {
+"chhmmcw": "Неверный аккаунт или пароль",
 "page.login": "Вход",
 "login.account": "Адрес электронной почты",
 "login.account.placeholder": "Пожалуйста, введите адрес электронной почты",
@@ -4373,6 +4387,7 @@ const ru_list = {
 }
 // 匈牙利语
 const hu_list = {
+"chhmmcw": "Helytelen fiók vagy jelszó",
 "page.login": "Bejelentkezés",
 "login.account": "E-mail cím",
 "login.account.placeholder": "Kérjük, adja meg az e-mail címét",
@@ -4686,6 +4701,7 @@ const hu_list = {
 }
 // 印尼语
 const id_list = {
+  "chhmmcw": "Akun atau kata sandi salah",
   "page.login": "Masuk",
   "login.account": "Alamat Email",
   "login.account.placeholder": "Masukkan alamat email",
@@ -4999,6 +5015,7 @@ const id_list = {
 }
 // 意大利语
 const it_list= {
+  "chhmmcw": "Account o password errati",
   "page.login": "Accesso",
   "login.account": "Indirizzo email",
   "login.account.placeholder": "Inserisci l'indirizzo email",
@@ -5312,6 +5329,7 @@ const it_list= {
 }
 // 挪威语
 const no_list = {
+"chhmmcw": "Feil konto eller passord",
 "page.login": "Logg inn",
 "login.account": "E-postadresse",
 "login.account.placeholder": "Vennligst skriv inn e-postadressen",
@@ -5625,6 +5643,7 @@ const no_list = {
 }
 // 罗马尼亚语
 const ro_list = {
+  "chhmmcw": "Cont sau parolă incorectă",
   "page.login": "Autentificare",
   "login.account": "Adresă de e-mail",
   "login.account.placeholder": "Introduceți adresa de e-mail",
@@ -5938,6 +5957,7 @@ const ro_list = {
 }
 // 瑞典语
 const sv_list = {
+  "chhmmcw": "Fel konto eller lösenord",
   "page.login": "Autentificare",
   "login.account": "Adresă de e-mail",
   "login.account.placeholder": "Introduceți adresa de e-mail",
@@ -6251,6 +6271,7 @@ const sv_list = {
 }
 // 越南语
 const vi_list = {
+  "chhmmcw": "Tài khoản hoặc mật khẩu sai",
   "page.login": "Đăng nhập",
   "login.account": "Địa chỉ email",
   "login.account.placeholder": "Vui lòng nhập địa chỉ email",
