@@ -172,7 +172,7 @@
                             window.location.href = "./home.html";
                         }, 1500);
                     }
-               }
+               },
                 errorCallback: function(xhr) {
                     console.error('请求错误', xhr);
                 }
@@ -201,7 +201,8 @@
               successCallback: function(result) {
 
                   // ✅ 统一提示（成功 / 失败都走这里）
-                  layer.msg(result.msg);
+                  const message = getLocalizedMessage(result.msg) || result.msg;
+                  layer.msg(message);
 
                   if(result.code == 200){
                       const { token, userInfo } = result.data;
