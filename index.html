@@ -174,44 +174,47 @@
         }
         
         $(".login-button").click(function() {
-                if($('#name').val() == '') {
-                    layer.msg($(".msg1").text());
-                    return false;
-                }
-                if($('#pwd').val() == '') {
-                    layer.msg($(".msg2").text());
-                    return false;
-                }
-                var url = preFixx + "/index/login";
-                sendPostRequest({
-                    url,
-                    type: 'POST',
-                    data: {
-                        name: $('#name').val(),
-                        pwd: $('#pwd').val()
-                    },
-                    successCallback: function(result) {
-                        if(result.code == 200){
-                            const { token, userInfo } = result.data;
-                            sessionStorage.setItem("token", token)
-                            sessionStorage.setItem("isFirst", "true")
-                            layer.msg(result.msg,function(){
-                                window.location.href="./home.html"
-                            });
-                        } else {
-                            // 获取后端返回的错误码，并根据当前语言显示对应的提示信息
-                const errorMsg = getLocalizedMessage(result.msg);
-                layer.msg(errorMsg);
-                            layer.msg(result.msg);
-                        }
-                    },
-                    errorCallback: function(xhr) {
-                        console.error('请求错误', xhr);
-                    }
-                })
-        });
-        
-        
+          if($('#name').val() == '') {
+              layer.msg($(".msg1").text());
+              return false;
+          }
+          if($('#pwd').val() == '') {
+              layer.msg($(".msg2").text());
+              return false;
+          }
+
+          var url = preFixx + "/index/login";
+
+          sendPostRequest({
+              url,
+              type: 'POST',
+              data: {
+                  name: $('#name').val(),
+                  pwd: $('#pwd').val()
+              },
+              successCallback: function(result) {
+
+                  // ✅ 统一提示（成功 / 失败都走这里）
+                  layer.msg(result.msg);
+
+                  if(result.code == 200){
+                      const { token, userInfo } = result.data;
+
+                      sessionStorage.setItem("token", token);
+                      sessionStorage.setItem("isFirst", "true");
+
+                       // ✅ 延迟跳转（等提示显示完）
+                      setTimeout(function(){
+                          window.location.href = "./home.html";
+                      }, 1500);
+                  }
+              },
+              errorCallback: function(xhr) {
+                  console.error('请求错误', xhr);
+                  layer.msg("网络错误，请稍后再试");
+              }
+           })
+      });
         getDefault()
     </script>
 </body>
