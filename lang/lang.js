@@ -6859,7 +6859,7 @@ $(document).ready(function() {
 const nowLang = sessionStorage.getItem('userLang') || 'zh-fn'
 
 function defaultLang() {
-      let lang = 'zh-fn';  // 设置默认语言为西班牙语
+      let lang = nowLang;
       let objList = {};
       if (lang === 'zh-fn') {
           objList = es_list; // 西班牙语
