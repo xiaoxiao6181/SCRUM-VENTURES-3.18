@@ -134,18 +134,6 @@
     <script src="lang/lang.js"></script>
     <script src="./js/reset.js"></script>
     <script>
-        function getLocalizedMessage(key) {
-          try {
-              const lang = sessionStorage.getItem("userLang") || "zh-fn";
-              if (window.langData && window.langData[lang]) {
-                  return window.langData[lang][key] || key;
-              }
-
-              return key;
-          } catch (e) {
-              return key;
-          }
-      }
         $(".hidden").click(() => {
             $(".form-money").attr("type", "text")
           $(".hidden").hide();
@@ -157,7 +145,7 @@
             $(".hidden").show()
         })
         if(!sessionStorage.getItem('userLang')) {
-            sessionStorage.setItem("userLang", "zh-fn")
+            sessionStorage.setItem("userLang", "en-us")
         }
         function getDefault() {
             var url = preFixx + '/index/getSystemConfig'
@@ -166,22 +154,19 @@
                 type: 'get',
                 data: {},
                 successCallback: function(result) {
-
                     if(result.code == 200){
-                        const { data } = result;
-
+                        const { code, data } = result;
                         if(data.length) {
                             const nowIndex = data.findIndex(item => item.key == 'loging_log')
                             if(nowIndex != -1) {
-                                $(".logo img").attr("src", preFixx + '/' + data[nowIndex].value)  
+                              $(".logo img").attr("src", preFixx + '/' +data[nowIndex].value)  
                             }
+                            
                         }
-
                     } else {
-                        const message = getLocalizedMessage(result.msg) || result.msg;
-                        layer.msg(message);
+                        layer.msg(result.msg);
                     }
-               },
+                },
                 errorCallback: function(xhr) {
                     console.error('请求错误', xhr);
                 }
@@ -189,48 +174,40 @@
         }
         
         $(".login-button").click(function() {
-          if($('#name').val() == '') {
-              layer.msg($(".msg1").text());
-              return false;
-          }
-          if($('#pwd').val() == '') {
-              layer.msg($(".msg2").text());
-              return false;
-          }
-
-          var url = preFixx + "/index/login";
-
-          sendPostRequest({
-              url,
-              type: 'POST',
-              data: {
-                  name: $('#name').val(),
-                  pwd: $('#pwd').val()
-              },
-              successCallback: function(result) {
-
-                  // ✅ 统一提示（成功 / 失败都走这里）
-                  const message = getLocalizedMessage(result.msg) || result.msg;
-                  layer.msg(message);
-
-                  if(result.code == 200){
-                      const { token, userInfo } = result.data;
-
-                      sessionStorage.setItem("token", token);
-                      sessionStorage.setItem("isFirst", "true");
-
-                       // ✅ 延迟跳转（等提示显示完）
-                      setTimeout(function(){
-                          window.location.href = "./home.html";
-                      }, 1500);
-                  }
-              },
-              errorCallback: function(xhr) {
-                  console.error('请求错误', xhr);
-                  layer.msg("网络错误，请稍后再试");
-              }
-           })
-      });
+                if($('#name').val() == '') {
+                    layer.msg($(".msg1").text());
+                    return false;
+                }
+                if($('#pwd').val() == '') {
+                    layer.msg($(".msg2").text());
+                    return false;
+                }
+                var url = preFixx + "/index/login";
+                sendPostRequest({
+                    url,
+                    type: 'POST',
+                    data: {
+                        name: $('#name').val(),
+                        pwd: $('#pwd').val()
+                    },
+                    successCallback: function(result) {
+                        if(result.code == 200){
+                            const { token, userInfo } = result.data;
+                            sessionStorage.setItem("token", token)
+                            sessionStorage.setItem("isFirst", "true")
+                            layer.msg(result.msg,function(){
+                                window.location.href="./home.html"
+                            });
+                        } else {
+                            layer.msg(result.msg);
+                        }
+                    },
+                    errorCallback: function(xhr) {
+                        console.error('请求错误', xhr);
+                    }
+                })
+        });
+        
         getDefault()
     </script>
 </body>
