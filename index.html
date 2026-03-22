@@ -199,6 +199,9 @@
                                 window.location.href="./home.html"
                             });
                         } else {
+                            // 获取后端返回的错误码，并根据当前语言显示对应的提示信息
+                const errorMsg = getLocalizedMessage(result.msg);
+                layer.msg(errorMsg);
                             layer.msg(result.msg);
                         }
                     },
@@ -207,6 +210,7 @@
                     }
                 })
         });
+        
         
         getDefault()
     </script>
